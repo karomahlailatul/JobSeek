@@ -1,0 +1,73 @@
+.login-page .App-logo {
+    height: 50px;
+    pointer-events: none;
+  }
+  
+  .login-page .btn-outline:hover,
+  .login-page .btn-outline:focus,
+  .login-page .btn-outline:active,
+  .login-page .btn-outline:active:focus:not(:disabled):not(.disabled) {
+    box-shadow: none !important;
+    outline: 0;
+    background-color: transparent;
+    color: var(--bs-success) !important;
+  }
+  
+  .login-page .btn-group {
+    border: 1px solid #9b9b9b;
+  }
+  
+  .login-page .btn-outline-success {
+    border: none !important;
+  }
+  
+  .label-button {
+    height: 48px;
+    font-weight: bold !important;
+    padding-top: 10px !important;
+  }
+  
+  .login-page .btn-group > .btn:hover {
+    color: var(--bs-success) !important;
+  }
+  
+  .login-page .btn-group > .btn-check:checked + .btn {
+    color: white !important;
+  }
+  
+  .login-page .btn-group > .btn-check:not(:checked) + .btn:hover {
+    color: white !important;
+  }
+  
+  .btn-submit {
+    height: 48px;
+  }
+  
+  .btn-submit:hover,
+  .btn-submit:focus,
+  .btn-submit:active {
+    color:  var(--bs-success)  !important;
+  background-color: var(--bs-light) !important;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .login-page .container,
+  .login-page .container-lg,
+  .login-page .container-md,
+  .login-page .container-sm,
+  .login-page .container-xl {
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .login-page .text-redirect {
+    text-decoration: none;
+  }
+  

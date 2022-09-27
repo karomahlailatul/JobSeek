@@ -1,0 +1,32 @@
+
+  .swiper-button-next {
+    height: 52px !important;
+    width: 52px !important;
+    border-radius: 50%;
+    background-color: #198754;
+    background-image: url("../../public/assets/icons/arrow_end_.svg");
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="grey" class="bi bi-chevron-right" viewBox="-10 -10 35 35"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>'); */
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+  
+  .swiper-button-next::after {
+    display: none;
+  }
+
+  .swiper-button-prev {
+    height: 52px !important;
+    width: 52px !important;
+    border-radius: 50%;
+    background-color: #198754;
+    background-image: url("../../public/assets/icons/arrow_start_.svg");
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="grey" class="bi bi-chevron-right" viewBox="-10 -10 35 35"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>'); */
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+  
+  .swiper-button-prev::after {
+    display: none;
+  }
