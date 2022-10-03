@@ -1,5 +1,6 @@
-import { configureStore ,combineReducers} from "@reduxjs/toolkit";
-import { createWrapper , HYDRATE} from "next-redux-wrapper";
+import { configureStore, combineReducers  } from "@reduxjs/toolkit";
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
+
 // import HomeNewReducer from "./Slice/HomeNewSlice";
 // import HomePopularReducer from "./Slice/HomePopularSlice";
 
@@ -96,13 +97,15 @@ import SignInReducer from "./Slice/SignInSlice";
 import SignUpUserReducer from "./Slice/SignUpUserSlice";
 import ProfileUserReducer from "./Slice/ProfileUserSlice";
 import NavBarReducer from "./Slice/NavBarSlice";
+import VerificationEmailReducer from "./Slice/VerificationEmailSlice";
 
 const rootReducer = combineReducers({
   SignIn: SignInReducer,
   SignUpUser: SignUpUserReducer,
   ProfileUser: ProfileUserReducer,
   NavBar: NavBarReducer,
-}) 
+  VerificationEmail: VerificationEmailReducer,
+});
 
 // const reducer = (state = {tick: 'init'}, action) => {
 //   switch (action.type) {
@@ -116,22 +119,17 @@ const rootReducer = combineReducers({
 //   }
 // };
 
-
-
-
-
-
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
     // console.log(state,action.payload)
     const nextState = {
-       ...state,
-       ...action.payload,
+      ...state,
+      ...action.payload,
     };
     return nextState;
- }
- return rootReducer(state, action);
-}
+  }
+  return rootReducer(state, action);
+};
 
 // const reducer = (state , action) => {
 //   switch (action.type) {
@@ -146,15 +144,16 @@ const reducer = (state, action) => {
 //   }
 // };
 
-
 const makeStore = () => {
   return configureStore({
-    reducer : reducer, 
+    reducer: reducer,
     devTools: true,
-  },
-  );
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+  });
 };
-
 
 // const makeStore = () => {
 //   return configureStore({
@@ -166,6 +165,4 @@ const makeStore = () => {
 //   });
 // };
 
-
-
-export const wrapper = createWrapper(makeStore, {debug: false});
+export const wrapper = createWrapper(makeStore, { debug: false });

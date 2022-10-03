@@ -248,17 +248,18 @@ const MyApp = ({ Component, ...rest }) => {
       ) : (
         <Fragment>
           <Provider store={store}>
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
+            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar />}
 
             {/* <NextNProgress /> */}
             <Component {...props.pageProps} />
 
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
+            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />}
 
-            <ToastContainer />
+            
           </Provider>
         </Fragment>
       )}
+      <ToastContainer />
     </Fragment>
 
   //   <Fragment>

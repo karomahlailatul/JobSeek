@@ -8,6 +8,24 @@ const nextConfig = {
   images: {
     domains: ['drive.google.com'],
   },
+
+
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/verification:path*',
+  //       has: [
+  //         {
+  //           type: 'query',
+  //           key: 'type',
+  //         },
+        
+  //       ],
+  //       destination: '/',
+  //     },
+      
+  //   ]
+  // },
 }
 
 module.exports = nextConfig
