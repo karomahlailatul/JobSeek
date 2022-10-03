@@ -13,20 +13,12 @@ import RecuiterTabProfile from "../../../components/RecuiterTabProfile";
 // import SellerProductIcon from "../../assets/images/icons/box-seam.svg";
 // import SellerOrderIcon from "../../assets/images/icons/order.svg";
 
-import ProtectAuth from "../../../components/HOC";
-
+import Cookies from "js-cookie";
 
 const Recuiter = () => {
-  
   const [token, setToken] = useState("");
   const [id, setId] = useState("");
-  // const id = "affae220-43c2-4011-abbb-12cae8145cc9";
-  // shoescomp
-  // const id = "9f7032af-5c14-4bb1-95ae-3e91b8e7faf4"
-  // kaos ind
-  // const id = "963d6a93-1649-42c7-9316-7639a97377cb"
-  // const {id} = useParams()
-  // console.log(id);
+ 
   const [recuiter, setRecuiter] = useState([]);
 
   const [statusEdit, setStatusEdit] = useState(false);
@@ -47,11 +39,12 @@ const Recuiter = () => {
   useEffect(() => {
     // dispatchProfileUser();
     getDataProfileRecuiter();
-    setId(localStorage.getItem("id"));
-    setToken(localStorage.getItem("token"));
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id,token]);
+    // setId(localStorage.getItem("id"));
+    // setToken(localStorage.getItem("token"));
+    setId(Cookies.get("id"));
+    setToken(Cookies.get("token"));
+
+  }, [id, token]);
 
   return (
     <Fragment>
@@ -60,25 +53,22 @@ const Recuiter = () => {
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 my-xl-5 my-lg-5 mt-md-5 mt-sm-5">
             <div className="col-12 d-flex mx-auto">
               <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 d-flex justify-content-center logo-profile-middle">
-                {/* <img className="" crossOrigin="anonymous" src={seller.logo} alt="" /> */}
                 <Image
-                      className="pictureThumbnails"
-                      referrerPolicy="no-referrer"
-                      width={60}
-                      height={60}
-                      layout="fixed"
-                      // src={"/assets/icons/mail.svg"}
-                      src={
-                        recuiter.logo === null || recuiter.logo === undefined ?  "/assets/icons/ico-user.svg" : recuiter.logo 
-                         
-                      }
-                      alt=""
-                    />
-
-
+                  className="pictureThumbnails"
+                  referrerPolicy="no-referrer"
+                  width={60}
+                  height={60}
+                  layout="fixed"
+                  src={
+                    recuiter.logo === null || recuiter.logo === undefined
+                      ? "/assets/icons/ico-user.svg"
+                      : recuiter.logo
+                  }
+                  alt=""
+                />
               </div>
               <div className="col-xl-8 col-lg-8 col-md-6 col-sm-6 my-auto">
-                <p className="my-auto fw-bold">{recuiter.company}</p>
+                <p className="my-auto fw-bold mb-1">{recuiter.company}</p>
 
                 <div className="my-auto" onClick={() => setStatusEdit(true)}>
                   <input
@@ -96,7 +86,7 @@ const Recuiter = () => {
                       src={"/assets/icons/edit.svg"}
                       alt=""
                     />
-                    <small>Change profile</small>
+                    <small className="ms-2">Change profile</small>
                   </label>
                 </div>
               </div>
@@ -111,7 +101,7 @@ const Recuiter = () => {
                         id="v-pills-tab"
                         role="tablist"
                         aria-orientation="horizontal"
-                      >
+                      > 
                         <li className="mb-1">
                           <div className="d-flex justify-content-between">
                             <button
@@ -133,7 +123,7 @@ const Recuiter = () => {
                                 /> */}
                               </div>
                               <span className="label-sidebar my-auto">
-                                 Recuiter
+                                Recuiter
                               </span>
                             </button>
                             <button
@@ -289,16 +279,16 @@ const Recuiter = () => {
               <div className="col-12 w-auto bg-white mx-3 my-5 py-3 px-3">
                 <div className="tab-content" id="v-pills-tabContent">
                   <RecuiterTabProfile
-                  recuiter={recuiter}
-                  // name_store={seller.name_store}
-                  // logo={seller.logo}
-                  // address={seller.address}
-                  // phone={seller.phone}
-                  // description={seller.description}
-                  statusEdit={statusEdit}
-                  setStatusEdit={setStatusEdit}
-                  getDataProfileRecuiter={getDataProfileRecuiter}
-                  token={token}
+                    recuiter={recuiter}
+                    // name_store={seller.name_store}
+                    // logo={seller.logo}
+                    // address={seller.address}
+                    // phone={seller.phone}
+                    // description={seller.description}
+                    statusEdit={statusEdit}
+                    setStatusEdit={setStatusEdit}
+                    getDataProfileRecuiter={getDataProfileRecuiter}
+                    token={token}
                   />
 
                   {/* <SellerPageTabProduct id={id} /> */}

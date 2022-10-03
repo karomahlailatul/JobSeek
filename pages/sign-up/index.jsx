@@ -1,11 +1,15 @@
 import { useEffect, useState, Fragment } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useDispatch } from "react-redux";
+import { postSignUpUser } from "../../app/redux/Slice/SignUpUserSlice";
+
+
 const UserCreate = () => {
+
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -29,37 +33,29 @@ const UserCreate = () => {
 
   const handleCreate = async (e) => {
     await e.preventDefault();
-
+  
     let param = "";
     if (document.getElementById("user").checked) {
       param = "users/register";
-    } else if (document.getElementById("recuiter").checked) {
-      param = "users/register-user-recuiter";
+    } else if (document.getElementById("recruiter").checked) {
+      param = "users/register-user-recruiter";
     }
 
-    await axios
-      .post(
-        process.env.REACT_APP_API_BACKEND + param,
-        JSON.stringify(dataUser),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then((res) => {
-        if (res.data.statusCode === 201) {
-          toast.success("Sign Up Success. wait a few seconds", {
-            autoClose: 2500,
-          });
-          setTimeout(() => {
-            router.push("/sign-in");
-          }, 2500);
-        } else {
-          toast.warning(res.data.message, { autoClose: 2500 });
-        }
-      })
-      .catch((err) => {
-        toast.warning(err.response.data.message, { autoClose: 2500 });
-      });
+    await dispatch(postSignUpUser({param,dataUser}))
+    .unwrap()
+
+    .then((item) => {
+      if (item.statusCode === 201) {
+        setTimeout(() => {
+          router.push("/sign-in");
+        }, 2000);
+      } else {
+        console.log("Sign Up Failed");
+      }
+    });
+
+
+
   };
 
   const [toggle, setToggle] = useState(true);
@@ -117,18 +113,18 @@ const UserCreate = () => {
 
                   <input
                     type="radio"
-                    value="recuiter"
+                    value="recruiter"
                     onChange={handleChange}
                     name="role"
                     className="btn-check"
-                    id="recuiter"
+                    id="recruiter"
                   />
                   <label
                     className="btn btn-outline-success  label-button d-flex justify-content-center"
                     onClick={handleClick}
-                    htmlFor="recuiter"
+                    htmlFor="recruiter"
                   >
-                    Recuiter
+                    Recruiter
                   </label>
                 </div>
                 <input
@@ -157,7 +153,7 @@ const UserCreate = () => {
                 />
 
                 <div
-                  id="recuiter"
+                  id="recruiter"
                   className="hide"
                   style={{ display: toggle ? "none" : "block" }}
                 >

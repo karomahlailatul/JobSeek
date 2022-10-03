@@ -12,7 +12,7 @@ function RecuiterTabProfile({
   getDataProfileRecuiter,
   token
 }) {
-  console.log(recuiter);
+  // console.log(recuiter);
   const [data, setData] = useState({
     id: recuiter.id,
     users_id: recuiter.users_id,
@@ -135,8 +135,8 @@ function RecuiterTabProfile({
                     <Image
                       className="pictureThumbnails"
                       referrerPolicy="no-referrer"
-                      width={110}
-                      height={110}
+                      width={180}
+                      height={180}
                       layout="fixed"
                       // src={"/assets/icons/mail.svg"}
                       src={

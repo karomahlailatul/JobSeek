@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useEffect, Fragment } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.css";
@@ -20,16 +20,16 @@ import "./profile/users/style.css";
 import "./sign-up/style.css";
 import "./sign-in/style.css";
 
+
 import { ToastContainer } from "react-toastify";
-// import NextNProgress from "nextjs-progressbar";
-import Router ,{ useRouter } from "next/router";
+import NextNProgress from "nextjs-progressbar";
+import { useRouter } from "next/router";
 
 import NavigationBar from "../components/NavBar";
 import Footer from "../components/Footer/index";
 
 import { wrapper } from "../app/redux/store";
 import { Provider } from "react-redux";
-import PreLoader from "../components/PreLoader";
 
 // Always show notification, next used legacy implementaion myst update use createWrapperStore
 // function MyApp({ Component, pageProps }) {
@@ -209,80 +209,28 @@ import PreLoader from "../components/PreLoader";
 // }
 
 // export default wrapper.withRedux(MyApp);
+
 const MyApp = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
     document.title = "Welcome | JobSeek";
-
-    Router.events.on("routeChangeStart", () => setIsLoading(true));
-    Router.events.on("routeChangeComplete", () => setIsLoading(false));
-    Router.events.on("routeChangeError", () => setIsLoading(false));
-
-    return () => {
-      Router.events.off("routeChangeStart", () => setIsLoading(true));
-      Router.events.off("routeChangeComplete", () => setIsLoading(false));
-      Router.events.off("routeChangeError", () => setIsLoading(false));
-    };
-  }, [Router.events]);
-// }, [router]);
+  }, []);
 
   return (
     <Fragment>
-      {isLoading ? (
-        <Fragment>
-          <PreLoader isLoading={isLoading} />
-        
-          {/* <Fragment>
-          <div className="preloader">
-            <div className="loading">
-              <div className="spinner-border" role="status"></div>
-            </div>
-          </div>
-        </Fragment> */}
-        
-        </Fragment>
-      ) : (
-        <Fragment>
-          <Provider store={store}>
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
+      <Provider store={store}>
+        {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
 
-            {/* <NextNProgress /> */}
-            <Component {...props.pageProps} />
+        <NextNProgress />
+        <Component {...props.pageProps} />
 
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
+        {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
 
-            <ToastContainer />
-          </Provider>
-        </Fragment>
-      )}
+        <ToastContainer />
+      </Provider>
     </Fragment>
-
-  //   <Fragment>
-  //   {isLoading ? (
-  //     <Fragment>
-  //       <PreLoader isLoading={isLoading} />
-  //     </Fragment>
-  //   ) : (
-  //   null
-       
-  //   )}
-
-  //   <Provider store={store}>
-  //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
-
-  //         <NextNProgress />
-  //         <Component {...props.pageProps} />
-
-  //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
-
-  //         <ToastContainer />
-  //       </Provider>
-     
-  // </Fragment>
   );
 };
 
