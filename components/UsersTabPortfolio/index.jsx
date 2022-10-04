@@ -1,8 +1,8 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment} from "react";
 
-import Image from "next/image";
+// import Image from "next/image";
 
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 const UsersTabPortfolio = () => {
 

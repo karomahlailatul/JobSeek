@@ -4,12 +4,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import "react-toastify/dist/ReactToastify.css";
 
 import PrivateAxios from "../../axios/PrivateAxios";
-import Cookies from "js-cookie";
-export const getProfileUser = createAsyncThunk("ProfileUser/getProfileUser", async () => {
+// import Cookies from "js-cookie";
+export const getProfileUser = createAsyncThunk("ProfileUser/getProfileUser", async ({token}) => {
   let api = PrivateAxios();
 
   try {
-    const token = Cookies.get('token')
+    // const token = Cookies.get('token')
     if (token) {
       const response = await api.get(process.env.REACT_APP_API_BACKEND + "users/profile", {
         headers: {
@@ -75,29 +75,29 @@ const ProfileUserSlice = createSlice({
         
         state.ProfileUser = action.payload.data;
 
-        state.user_id = action.payload.data.id;
-        state.user_email = action.payload.data.email;
-        state.user_name = action.payload.data.name;
-        state.user_gender = action.payload.data.gender;
-        state.user_phone = action.payload.data.phone;
+        // state.user_id = action.payload.data.id;
+        // state.user_email = action.payload.data.email;
+        // state.user_name = action.payload.data.name;
+        // state.user_gender = action.payload.data.gender;
+        // state.user_phone = action.payload.data.phone;
 
         if (action.payload.data.date_of_birth) {
           const dob = action.payload.data.date_of_birth.split("T");
-        state.user_date_of_birth = dob[0]
+        // state.user_date_of_birth = dob[0]
         state.ProfileUser.date_of_birth = dob[0]
       } else {
-        state.user_date_of_birth = action.payload.data.date_of_birth
+        // state.user_date_of_birth = action.payload.data.date_of_birth
         state.ProfileUser.date_of_birth = action.payload.data.date_of_birth
       }
 
-        state.user_picture = action.payload.data.picture;
-        state.user_job_desk = action.payload.data.job_desk;
-        state.user_domicile = action.payload.data.domicile;
-        state.user_location = action.payload.data.picture;
-        state.user_description = action.payload.data.description;
-        state.user_role = action.payload.data.role;
-        state.user_created_on = action.payload.data.created_on;
-        state.user_updated_on = action.payload.data.updated_on;
+        // state.user_picture = action.payload.data.picture;
+        // state.user_job_desk = action.payload.data.job_desk;
+        // state.user_domicile = action.payload.data.domicile;
+        // state.user_location = action.payload.data.picture;
+        // state.user_description = action.payload.data.description;
+        // state.user_role = action.payload.data.role;
+        // state.user_created_on = action.payload.data.created_on;
+        // state.user_updated_on = action.payload.data.updated_on;
       }
 
       // console.log( action.payload)

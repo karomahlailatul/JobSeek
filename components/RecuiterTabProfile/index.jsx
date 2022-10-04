@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 
 import axios from "axios";
 import Image from "next/image";
@@ -8,8 +8,8 @@ import {  toast } from "react-toastify";
 function RecuiterTabProfile({
   recuiter,
   statusEdit,
-  setStatusEdit,
-  getDataProfileRecuiter,
+  // setStatusEdit,
+  // getDataProfileRecuiter,
   token
 }) {
   // console.log(recuiter);

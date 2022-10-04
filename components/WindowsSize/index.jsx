@@ -84,7 +84,7 @@ export default function useWindowSize() {
     // only execute all the code below in client side
     if (typeof window !== 'undefined') {
       // Handler to call on window resize
-      function handleResize() {
+      const handleResize= () => {
         // Set window width/height to state
         setWindowSize({
           width: window.innerWidth,

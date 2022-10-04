@@ -17,43 +17,27 @@ import useWindowSize from "../WindowsSize";
 import Cookies from "js-cookie";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getProfileUser } from "../../app/redux/Slice/ProfileUserSlice";
+import { getNavBar } from "../../app/redux/Slice/NavBarSlice";
 
-const NavigationBar = (
-  // { id, role, token, refreshToken, lockCredential }
-  ) => {
-  const [token, setToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(null);
-  const [role, setRole] = useState(null);
-  const [id, setId] = useState(null);
-
-  // console.log(token)
-  // console.log(refreshToken)
-  // console.log(role)
-  // console.log(id)
-  // console.log(lockCredential)
+const NavigationBar = () => {
+  const [token, setToken] = useState("");
+  const [refreshToken, setRefreshToken] = useState("");
+  const [role, setRole] = useState("");
+  const [id, setId] = useState("");
 
   const expand = "lg";
   const size = useWindowSize();
   const router = useRouter();
 
   const dispatch = useDispatch();
-  // const dispatchNavBar = async () => {
-  //   await dispatch(getNavBar()).unwrap();
-  // };
-
-  const dispatchGetProfileUser = async () => {
-    await dispatch(getProfileUser({token})).unwrap();
+  const dispatchNavBar = async () => {
+    await dispatch(getNavBar()).unwrap();
   };
 
-  const { ProfileUser, isLoading } = useSelector((state) => state.ProfileUser);
+  const { NavBar, isLoading } = useSelector((state) => state.NavBar);
 
   // const [searchParams, setSearchParams] = useSearchParams();
   // const [search, setSearch] = useState("");
-
-  // console.log(token)
-
-  // const [isLoadingNavbar , setIsLoadingNavbar] = useState()
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -75,10 +59,10 @@ const NavigationBar = (
   // };
 
   const handleSignOut = () => {
-    // setToken("");
-    // setRefreshToken("");
-    // setRole("");
-    // setId("");
+    setToken("");
+    setRefreshToken("");
+    setRole("");
+    setId("");
     Cookies.remove("id");
     Cookies.remove("role");
     Cookies.remove("token");
@@ -91,7 +75,7 @@ const NavigationBar = (
       <Image
         className="pictureThumbnails"
         referrerPolicy="no-referrer"
-        src={ProfileUser.picture === null || ProfileUser.picture === undefined ? "/assets/icons/ico-user.svg" : ProfileUser.picture}
+        src={NavBar.picture === null || NavBar.picture === undefined ? "/assets/icons/ico-user.svg" : NavBar.picture}
         width={24}
         height={24}
         layout="fixed"
@@ -108,7 +92,7 @@ const NavigationBar = (
       <Image
         className="pictureThumbnails"
         referrerPolicy="no-referrer"
-        src={ProfileUser.picture === null || ProfileUser.picture === undefined ? "/assets/icons/ico-user.svg" : ProfileUser.picture}
+        src={NavBar.picture === null || NavBar.picture === undefined ? "/assets/icons/ico-user.svg" : NavBar.picture}
         width={24}
         height={24}
         layout="fixed"
@@ -120,22 +104,15 @@ const NavigationBar = (
     </span>
   );
 
-  console.log(token)
-
   useEffect(() => {
-    dispatchGetProfileUser();
-    
+    dispatchNavBar();
+    // getDataProfile();
+    // setIsAuth(localStorage.getItem("token"));
     setToken(Cookies.get("token"));
     setRefreshToken(Cookies.get("refreshToken"));
     setRole(Cookies.get("role"));
     setId(Cookies.get("id"));
-
-    // if (token == null) {
-    //   setIsLoadingNavbar(true)
-    // } else {
-    //   setIsLoadingNavbar(false)
-    // }
-  }, [dispatch, token, refreshToken, role, id ]);
+  }, [dispatch, token, refreshToken, role, id]);
 
   return (
     <Fragment>
@@ -145,7 +122,6 @@ const NavigationBar = (
             <a
               onClick={() => {
                 router.push("/");
-                dispatchGetProfileUser();
               }}
               className="col-lg-3 col-md-3 col-sm-3 cursor-pointer"
             >
@@ -163,11 +139,9 @@ const NavigationBar = (
                     if (size <= 992) {
                       setShowOffcanvas(false);
                       router.push("/");
-                      dispatchGetProfileUser();
                     } else {
                       setShowOffcanvas(false);
                       router.push("/");
-                      dispatchGetProfileUser();
                     }
                   }}
                   className="col-lg-3 col-md-3 col-sm-3 link-redirect"
@@ -178,14 +152,16 @@ const NavigationBar = (
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {/* {isLoading ? (
-                <div className="col-12 d-flex justify-content-end">
-                  <div className="">
-                    <div className="spinner-border text-success" style={{ width: "2rem", height: "2rem", opacity: "0.8" }} role="status"></div>
+              {isLoading ? (
+                <div>
+                  <div className="1">
+                    <div className="1">
+                      <div className="spinner-border text-success" style={{ width: "2rem", height: "2rem" }} role="status"></div>
+                    </div>
                   </div>
                 </div>
-              ) :  */}
-              {( token ? (
+              ) : null}
+              {token ? (
                 router.pathname === "/profile/recuiter" ? (
                   <Fragment>
                     {/* Navbar Recuiter Auth */}
@@ -193,74 +169,74 @@ const NavigationBar = (
                       {size.width <= 992 ? (
                         <Fragment>
                           {/* <div className="col-xl-8 col-lg-8">
-                      </div>
-          
-                      <div className="d-grid ">
-                        <div className="col-12 d-flex mt-4">
-                          <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
-                            <img
-                              className="photoSide"
-                              crossOrigin="anonymous"
-                              src={(seller_logo === null || seller_logo === undefined ? PhotoEmpty : seller_logo)} alt="" 
-                              />
-                          </div>
-                          <div className="col-8">
-                            <h5 className="fw-bold text-muted">email</h5>
-                            <p className="text-muted">UID Seller : </p>
-                          </div>
-                          <div className="col-2 d-flex ">
-                            <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                             </div>
-                            <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
+                        </div>
+
+                        <div className="d-grid ">
+                          <div className="col-12 d-flex mt-4">
+                            <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
+                              <img
+                                className="photoSide"
+                                crossOrigin="anonymous"
+                                src={(seller_logo === null || seller_logo === undefined ? PhotoEmpty : seller_logo)} alt="" 
+                                />
+                            </div>
+                            <div className="col-8">
+                              <h5 className="fw-bold text-muted">email</h5>
+                              <p className="text-muted">UID Seller : </p>
+                            </div>
+                            <div className="col-2 d-flex ">
+                              <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
+                               </div>
+                              <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
+                              </div>
                             </div>
                           </div>
-                        </div>
-          
-                        <div className="col-12 d-grid mt-4">
-                          <Button
-                            variant="outline-danger"
-                            onClick={() => {
-                              router.push("/profile/seller");
-                              toggleOffcanvas();
-                            }}
-                            className=" rounded-pill block  "
-                            type="button"
-                          >
-                            <p className="my-auto"> My Profile Seller</p>
-                          </Button>
-                        </div>
-          
-                        <Nav.Link>
+
                           <div className="col-12 d-grid mt-4">
                             <Button
                               variant="outline-danger"
                               onClick={() => {
-                                router.push("/profile/user");
+                                router.push("/profile/seller");
                                 toggleOffcanvas();
                               }}
                               className=" rounded-pill block  "
                               type="button"
                             >
-                              <p className="my-auto"> Switch to User</p>
+                              <p className="my-auto"> My Profile Seller</p>
                             </Button>
                           </div>
-                        </Nav.Link>
-          
-                        <div className="col-12 d-grid mt-4">
-                          <Button
-                            variant="danger"
-                            onClick={() => {
-                              router.push("/home");
-                              toggleOffcanvas();
-                              handleSignOut();
-                            }}
-                            className=" rounded-pill block  "
-                            type="button"
-                          >
-                            <p className="my-auto">Sign Out</p>
-                          </Button>
-                        </div>
-                      </div> */}
+
+                          <Nav.Link>
+                            <div className="col-12 d-grid mt-4">
+                              <Button
+                                variant="outline-danger"
+                                onClick={() => {
+                                  router.push("/profile/user");
+                                  toggleOffcanvas();
+                                }}
+                                className=" rounded-pill block  "
+                                type="button"
+                              >
+                                <p className="my-auto"> Switch to User</p>
+                              </Button>
+                            </div>
+                          </Nav.Link>
+
+                          <div className="col-12 d-grid mt-4">
+                            <Button
+                              variant="danger"
+                              onClick={() => {
+                                router.push("/home");
+                                toggleOffcanvas();
+                                handleSignOut();
+                              }}
+                              className=" rounded-pill block  "
+                              type="button"
+                            >
+                              <p className="my-auto">Sign Out</p>
+                            </Button>
+                          </div>
+                        </div> */}
                         </Fragment>
                       ) : (
                         <Fragment>
@@ -350,11 +326,11 @@ const NavigationBar = (
                           <div className="d-grid ">
                             <div className="col-12 d-flex mt-4">
                               <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
-                                <Image className="photoSide" referrerPolicy="no-referrer" src={ProfileUser.picture === null || ProfileUser.picture === undefined ? "/assets/icons/ico-user.svg" : ProfileUser.picture} width={72} height={72} layout="fixed" alt="" />
+                                <Image className="photoSide" referrerPolicy="no-referrer" src={NavBar.picture === null || NavBar.picture === undefined ? "/assets/icons/ico-user.svg" : NavBar.picture} width={72} height={72} layout="fixed" alt="" />
                               </div>
                               <div className="col-8">
-                                <h5 className="fw-bold text-muted">{ProfileUser.email}</h5>
-                                <p className="text-muted">UID : {ProfileUser.id}</p>
+                                <h5 className="fw-bold text-muted">{NavBar.email}</h5>
+                                <p className="text-muted">UID : {NavBar.id}</p>
                               </div>
                               <div className="col-2 d-flex ">
                                 <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
@@ -452,9 +428,9 @@ const NavigationBar = (
                             <div className="col-4 d-flex justify-content-center align-items-center block">
                               <NavDropdown title={pictureThumbnails} align="end" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                                 <NavDropdown.Header className="d-grid ">
-                                  <p className="mb-0 fw-bold">{ProfileUser.email}</p>
+                                  <p className="mb-0 fw-bold">{NavBar.email}</p>
                                   <p className="mb-0">
-                                    <small> UID :{ProfileUser.id}</small>
+                                    <small> UID :{NavBar.id}</small>
                                   </p>
                                 </NavDropdown.Header>
                                 <NavDropdown.Divider />
@@ -607,8 +583,7 @@ const NavigationBar = (
                     )}
                   </div>
                 </Fragment>
-              ))}
-            {/* } */}
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { useEffect, Fragment } from "react";
+// import Head from "next/head";
+import { Fragment } from "react";
 import Image from "next/image";
-import ImageFooter from "../../assets/images/peworld.png";
+// import ImageFooter from "../../assets/images/peworld.png";
 import { useRouter } from "next/router";
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
         <footer className="container border border-success">
           <a
             className="d-flex justify-content-start mt-4"
-            onClick={(e) => router.push("/")}
+            onClick={() => router.push("/")}
           >
             <Image
               src={"/assets/logo.svg"}

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
@@ -16,8 +16,8 @@ export const getVerificationEmail = createAsyncThunk("VerificationEmail/getVerif
           // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
         },
       });
-    //   console.log(response.data)
-      return response.data.data;
+      // console.log(response)
+      return response;
     }
   } catch (error) {
     

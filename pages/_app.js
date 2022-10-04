@@ -22,7 +22,7 @@ import "./sign-in/style.css";
 
 import { ToastContainer } from "react-toastify";
 // import NextNProgress from "nextjs-progressbar";
-import Router ,{ useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 import NavigationBar from "../components/NavBar";
 import Footer from "../components/Footer/index";
@@ -209,14 +209,88 @@ import PreLoader from "../components/PreLoader";
 // }
 
 // export default wrapper.withRedux(MyApp);
-const MyApp = ({ Component, ...rest }) => {
+import SSRProvider from 'react-bootstrap/SSRProvider'
+
+const MyApp = ({ Component, id, role, token, refreshToken, lockCredential, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
+  // console.log(token)
+  // console.log(refreshToken)
+  // console.log(role)
+  // console.log(id)
+  // console.log(lockCredential)
+
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
     document.title = "Welcome | JobSeek";
+
+    // if (!lockCredential) {
+    //   window.onunload
+    // }
+
+    // console.log(lockCredential)
+
+    // window.addEventListener('onunload', () => {
+    //   // // Cancel the event as stated by the standard.
+    //   // event.preventDefault();
+    //   // // Chrome requires returnValue to be set.
+    //   // event.returnValue = '';
+
+    //    if (!lockCredential) {
+    //     Cookies.remove("id");
+    //     Cookies.remove("role");
+    //     Cookies.remove("token");
+    //     Cookies.remove("refreshToken");
+    //     Cookies.remove("lockCredential");
+    // }
+    // });
+
+    // window.addEventListener("onunload", () => {
+    //   if (lockCredential == false) {
+    //     Cookies.remove("id");
+    //     Cookies.remove("role");
+    //     Cookies.remove("token");
+    //     Cookies.remove("refreshToken");
+    //     Cookies.remove("lockCredential");
+    //   }
+    // });
+
+    // function pageUnloaded()
+    // {
+    //     alert("unload event handler called.");
+    // }
+    // window.addEventListener("unload", pageUnloaded, false);
+
+    // window.addEventListener('beforeunload',  function (e) {
+
+    //         // if (lockCredential) {
+    //             // e.preventDefault();
+    //             // e.returnValue = '';
+    //           // }
+    // })
+
+    //     window.onbeforeunload = WindowCloseHanlder;
+    // function WindowCloseHanlder()
+    // {
+    //     window.alert('test');
+    // }
+
+    // window.onbeforeunload = function(){
+    //   console.log('closing shared worker port...');
+    //   return window.alert('Take care now, bye-bye then.');
+    // };
+
+    // addEventListener("beforeunload", beforeUnloadListener, {capture: true});
+    // const beforeUnloadListener = (event) => {
+    //   event.preventDefault();
+    //   return event.returnValue = "Are you sure you want to exit?";
+    // };
+
+    // onbeforeunload = (event) => {
+    //   window.alert('test');
+    // };
 
     Router.events.on("routeChangeStart", () => setIsLoading(true));
     Router.events.on("routeChangeComplete", () => setIsLoading(false));
@@ -228,14 +302,15 @@ const MyApp = ({ Component, ...rest }) => {
       Router.events.off("routeChangeError", () => setIsLoading(false));
     };
   }, [Router.events]);
-// }, [router]);
+  // }, [router]);
 
   return (
     <Fragment>
+      <SSRProvider>
       {isLoading ? (
         <Fragment>
           <PreLoader isLoading={isLoading} />
-        
+
           {/* <Fragment>
           <div className="preloader">
             <div className="loading">
@@ -243,48 +318,63 @@ const MyApp = ({ Component, ...rest }) => {
             </div>
           </div>
         </Fragment> */}
-        
         </Fragment>
       ) : (
         <Fragment>
           <Provider store={store}>
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar />}
+            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar id={id} role={role} token={token} refreshToken={refreshToken} lockCredential={lockCredential} />}
 
             {/* <NextNProgress /> */}
             <Component {...props.pageProps} />
 
             {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />}
-
-            
           </Provider>
         </Fragment>
       )}
       <ToastContainer />
-    </Fragment>
+      </SSRProvider>
+      </Fragment>
 
-  //   <Fragment>
-  //   {isLoading ? (
-  //     <Fragment>
-  //       <PreLoader isLoading={isLoading} />
-  //     </Fragment>
-  //   ) : (
-  //   null
-       
-  //   )}
+    //   <Fragment>
+    //   {isLoading ? (
+    //     <Fragment>
+    //       <PreLoader isLoading={isLoading} />
+    //     </Fragment>
+    //   ) : (
+    //   null
 
-  //   <Provider store={store}>
-  //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
+    //   )}
 
-  //         <NextNProgress />
-  //         <Component {...props.pageProps} />
+    //   <Provider store={store}>
+    //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <NavigationBar />}
 
-  //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
+    //         <NextNProgress />
+    //         <Component {...props.pageProps} />
 
-  //         <ToastContainer />
-  //       </Provider>
-     
-  // </Fragment>
+    //         {router.pathname === "/sign-in" || router.pathname === "/sign-up" ? null : <Footer />}
+
+    //         <ToastContainer />
+    //       </Provider>
+
+    // </Fragment>
   );
 };
 
 export default MyApp;
+
+MyApp.getInitialProps = async ({ ctx }) => {
+
+  const token = ctx.req?.cookies?.token || null;
+  const refreshToken = ctx.req?.cookies?.refreshToken || null;
+  const role = ctx.req?.cookies?.role || null;
+  const id = ctx.req?.cookies?.id || null;
+  const lockCredential = ctx.req?.cookies?.lockCredential || null;
+
+  return {
+    token: token,
+    refreshToken: refreshToken,
+    role: role,
+    id: id,
+    lockCredential: lockCredential,
+  };
+};

@@ -9,18 +9,20 @@ import PreLoader from "../../components/PreLoader";
 import { wrapper } from "../../app/redux/store";
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
-  const verifyType = ctx.query.type || null;
-  const usersId = ctx.query.id || null;
-  const tokenVerification = ctx.query.token || null;
+  const verifyType = ctx?.query?.type || null;
+  const usersId = ctx?.query?.id || null;
+  const tokenVerification = ctx?.query?.token || null;
 
   if (verifyType != null || usersId != null || tokenVerification != null) {
     await store.dispatch(getVerificationEmail({ verifyType, usersId, tokenVerification }));
   }
   const value = await store.getState().VerificationEmail.VerificationEmail;
 
-  const status = value.status || null;
-  const statusCode = value.statusCode || null;
-  const message = value.message || null;
+  // console.log(value);
+
+  const status = value?.status || null;
+  const statusCode = value?.statusCode || null;
+  const message = value?.message || null;
 
   const isLoading = await store.getState().VerificationEmail.isLoading;
 
@@ -38,13 +40,14 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
 });
 
 const Verification = ({ status, statusCode, message, verifyType, usersId, tokenVerification, isLoading }) => {
-  // console.log(status);
-  // console.log(statusCode);
-  // console.log(message);
-  // console.log(verifyType);
-  // console.log(usersId);
-  // console.log(tokenVerification);
-  // console.log(isLoading);
+  
+  // console.log("status : ",status);
+  // console.log("statusCode : ",statusCode);
+  // console.log("message : ",message);
+  // console.log("verifyType : ",verifyType);
+  // console.log("usersId : ",usersId);
+  // console.log("tokenVerification : ",tokenVerification);
+  // console.log("isLoading : ",isLoading);
 
   useEffect(() => {
     document.title = "Verification | JobSeek";
@@ -56,7 +59,7 @@ const Verification = ({ status, statusCode, message, verifyType, usersId, tokenV
       if (status != null || statusCode != null || message != null) {
         if (statusCode == 200) {
           toast.success(message, { autoClose: 2000, toastId: "successVerificationEmail" });
-          Router.push("/");
+          Router.push("/sign-in");
         } else {
           toast.warning(message, { autoClose: 2000, toastId: "errorVerificationEmail" });
           Router.push("/");

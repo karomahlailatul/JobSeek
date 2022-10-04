@@ -12,7 +12,7 @@ import nookies from 'nookies'
 
 export const getServerSideProps = wrapper.getServerSideProps( (store) => async (ctx) => {
 
-              const {token , refreshToken , role ,id } = nookies.get(ctx)
+              const {token , refreshToken ,  } = nookies.get(ctx)
 
               await store.dispatch(getProfileUser({token,refreshToken}))
               

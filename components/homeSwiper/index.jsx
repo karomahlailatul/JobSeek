@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { useEffect, Fragment } from "react";
+// import Head from "next/head";
+import { Fragment } from "react";
 import Image from "next/image";
-import ImageFooter from "../../assets/images/home_1.png";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+// import ImageFooter from "../../assets/images/home_1.png";
+import { Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css/navigation";

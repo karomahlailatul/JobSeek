@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { useEffect, Fragment } from "react";
+// import Head from "next/head";
+import {  Fragment } from "react";
 // import Navbar from "../../components/navbar/index";
 import HomeSwiper from "../components/homeSwiper";
 import Image from "next/image";
-import ImageProfile from "../assets/images/home_1.png";
+// import ImageProfile from "../assets/images/home_1.png";
 //import { SwiperSlide } from "swiper";
 
 const Home = () => {

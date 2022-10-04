@@ -3,13 +3,13 @@ import  { Fragment ,useState , useEffect} from 'react'
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
 const Job = () => {
   
-  const router = useRouter();
+  // const router = useRouter();
   const keyword = ""
   const [job, setJob] = useState([]);
   const getJob = async () => {
@@ -48,7 +48,7 @@ const Job = () => {
 
               <div className="col-12 my-3">
                 <div className="row  d-flex px-2">
-                  {job.map((item, index) => (
+                  {job.map((item) => (
                     <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 my-2 link-product " key={item.id}>
                     <Link  href={`/job/${item.id}`} >
                       <Card className="container border rounded text-center">

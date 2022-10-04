@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Cookies from "js-cookie";
 
-export const postSignIn = createAsyncThunk("SignIn/postSignIn", async ({data}) => {
+export const postSignIn = createAsyncThunk("SignIn/postSignIn", async ({data,lockCredential}) => {
   try {
     const response = await axios.post(process.env.REACT_APP_API_BACKEND + "users/login", JSON.stringify(data), {
       headers: {
@@ -20,11 +20,13 @@ export const postSignIn = createAsyncThunk("SignIn/postSignIn", async ({data}) =
       Cookies.set("refreshToken", response.data.data.refreshToken);
       Cookies.set("role", response.data.data.role);
       Cookies.set("id", response.data.data.id);
+      Cookies.set("lockCredential", lockCredential);
 
       // localStorage.setItem("token", response.data.data.token);
       // localStorage.setItem("refreshToken", response.data.data.refreshToken);
       // localStorage.setItem("role", response.data.data.role);
       // localStorage.setItem("id", response.data.data.id);
+      
       return response.data;
 
     } else {

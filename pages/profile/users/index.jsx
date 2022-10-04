@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileUser } from "../../../app/redux/Slice/ProfileUserSlice";
 
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 import UsersTabProfile from "../../../components/UsersTabProfile";
 import UsersTabSkill from "../../../components/UsersTabSkill";
@@ -27,7 +27,7 @@ const ProfileUser = () => {
 
   const [statusEdit, setStatusEdit] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
   const dispatch = useDispatch();
 
   const dispatchGetProfileUser = async () => {
@@ -39,11 +39,11 @@ const ProfileUser = () => {
      // ProfileUser
     // user_id,
     // user_email,
-    user_name,
+    // user_name,
     // user_gender,
     // user_phone,
     // user_date_of_birth,
-    user_picture,
+    // user_picture,
     // users_job_desk,
     // users_domicile,
     // users_location,
@@ -84,12 +84,12 @@ const ProfileUser = () => {
                   width={60}
                   height={60}
                   layout="fixed"
-                  src={user_picture === null || user_picture === undefined ? "/assets/icons/ico-user.svg" : user_picture}
+                  src={ProfileUser?.picture === null || ProfileUser?.picture  === undefined ? "/assets/icons/ico-user.svg" : ProfileUser?.picture }
                   alt=""
                 />
               </div>
               <div className="col-xl-8 col-lg-8 col-md-6 col-sm-6 my-auto">
-                <p className="my-auto fw-bold mb-1">{user_name}</p>
+                <p className="my-auto fw-bold mb-1">{ProfileUser?.name}</p>
 
                 <div className="my-auto" onClick={() => {
                   setStatusEdit(true)

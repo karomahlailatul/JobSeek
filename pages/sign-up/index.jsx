@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { postSignUpUser } from "../../app/redux/Slice/SignUpUserSlice";
 
+import PreLoader from "../../components/PreLoader";
 
 const UserCreate = () => {
 
@@ -45,12 +46,12 @@ const UserCreate = () => {
     .unwrap()
 
     .then((item) => {
-      if (item.statusCode === 201) {
-        setTimeout(() => {
+      if (item?.statusCode === 201) {
+        // setTimeout(() => {
           router.push("/sign-in");
-        }, 2000);
+        // }, 2000);
       } else {
-        console.log("Sign Up Failed");
+        // console.log("Sign Up Failed");
       }
     });
 
@@ -64,17 +65,20 @@ const UserCreate = () => {
     setToggle(!toggle);
   };
 
+  const { isLoading } = useSelector((state) => state.SignUpUser);
+
   useEffect(() => {
     document.title = "Sign Up | JobSeek";
   });
 
   return (
     <Fragment>
+      <PreLoader isLoading={isLoading} />
       <div className="register-page">
         <div className="container">
           <a
             className="d-flex justify-content-center mb-3"
-            onClick={(e) => router.push("/")}
+            onClick={() => router.push("/")}
           >
             <Image
               src={"/assets/logo_colour.svg"}

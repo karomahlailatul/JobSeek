@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import axios from "axios";
-import Link from "next/link";
+// import Link from "next/link";
 
 
 export async function getServerSideProps(context) {
@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
 const JobDetails = ({ data }) => {
   console.log(data)
 
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <Fragment>
       <div className="container text-center ">
