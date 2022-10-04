@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileUser } from "../../app/redux/Slice/ProfileUserSlice";
 import { putProfileUserPutProfile } from "../../app/redux/Slice/ProfileUserPutProfileSlice";
 
-import { getNavBar } from "../../app/redux/Slice/NavBarSlice";
+// import { getNavBar } from "../../app/redux/Slice/NavBarSlice";
 
 const UsersTabProfile = ({
   // ProfileUser,
@@ -23,9 +23,9 @@ const UsersTabProfile = ({
     await dispatch(getProfileUser()).unwrap();
   };
 
-  const dispatchNavBar = async () => {
-    await dispatch(getNavBar()).unwrap();
-  };
+  // const dispatchNavBar = async () => {
+  //   await dispatch(getNavBar()).unwrap();
+  // };
 
   const { ProfileUser } = useSelector((state) => state.ProfileUser);
 
@@ -83,7 +83,7 @@ const UsersTabProfile = ({
         setNewPicture();
         setPreview();
         dispatchGetProfileUser();
-        dispatchNavBar();
+        // dispatchNavBar();
         setStatusEdit(false);
       });
 

@@ -96,15 +96,16 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import SignInReducer from "./Slice/SignInSlice";
 import SignUpUserReducer from "./Slice/SignUpUserSlice";
 import ProfileUserReducer from "./Slice/ProfileUserSlice";
-import NavBarReducer from "./Slice/NavBarSlice";
 import VerificationEmailReducer from "./Slice/VerificationEmailSlice";
+import JobSearchReducer from "./Slice/JobSearchSlice"
 
 const rootReducer = combineReducers({
   SignIn: SignInReducer,
   SignUpUser: SignUpUserReducer,
   ProfileUser: ProfileUserReducer,
-  NavBar: NavBarReducer,
+  // NavBar: NavBarReducer,
   VerificationEmail: VerificationEmailReducer,
+  JobSearch : JobSearchReducer,
 });
 
 // const reducer = (state = {tick: 'init'}, action) => {

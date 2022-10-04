@@ -12,7 +12,7 @@ export const putMyRecipesPutRecipes = createAsyncThunk("MyRecipesPutRecipes/putM
     const token = localStorage.getItem("token");
     // console.log(idRecipes)
     
-    console.log(formDataEdit)
+    // console.log(formDataEdit)
     if (token) {
       const response = await api
         .put(process.env.REACT_APP_API_BACKEND + "recipes/"+ idRecipes , formDataEdit, {

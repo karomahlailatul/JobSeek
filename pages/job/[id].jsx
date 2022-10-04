@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
 
 
 const JobDetails = ({ data }) => {
-  console.log(data)
+  // console.log(data.name)
 
   // const router = useRouter();
   return (
@@ -46,20 +46,20 @@ const JobDetails = ({ data }) => {
         </div>
         <div className="col-12 my-4">
           <h2 className="fs-5 fw-bold">Job Name</h2>
-          {/* <h2 className="fs-6 fw-bold text-danger">{result.name}</h2> */}
+          <h2 className="fs-6 fw-bold text-danger">{data.name}</h2>
         </div>
         <div className="col-12 my-4">
           <h2 className="fs-5 fw-bold">Company</h2>
-          {/* <h2 className="fs-6 fw-bold text-danger">{result.company}</h2> */}
+          <h2 className="fs-6 fw-bold text-danger">{data.company}</h2>
         </div>
         <div className="col-12 my-4">
           <h2 className="fs-5 fw-bold">Position</h2>
-          {/* <h2 className="fs-6 fw-bold text-danger">{result.position}</h2> */}
+          <h2 className="fs-6 fw-bold text-danger">{data.position}</h2>
         </div>
         <div className="col-12 my-4">
           <h2 className="fs-5 fw-bold">Description</h2>
           <p className="fs-6 text-muted ">
-            {/* <small> {result.description}</small> */}
+            <small> {data.description}</small>
           </p>
         </div>
       </div>

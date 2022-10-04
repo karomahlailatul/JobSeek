@@ -1,5 +1,5 @@
 import { useState, Fragment, useEffect } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -48,25 +48,38 @@ const NavigationBar = (
 
   const { ProfileUser, isLoading } = useSelector((state) => state.ProfileUser);
 
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const [search, setSearch] = useState("");
 
   // console.log(token)
 
   // const [isLoadingNavbar , setIsLoadingNavbar] = useState()
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // setSearch(e.currentTarget.value);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState("");
+  const handleSearch = async (e) => {
+    //  e.preventDefault();
+    setSearch(e.currentTarget.value);
+  
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // if (search !== "") {
-    //   setSearchParams({
-    //     keyword: search,
-    //   });
-    // }
+  // console.log(search);
+  const handleSearchSubmit = async () => {
+    // await e.preventDefault();
+    if (search !== "") {
+      // router.push("/job?keyword=",search)
+      Router.push({
+        pathname: `/job`,
+        query: {
+          keyword: `${search}`,
+          // impact: `${impact}`,
+          // location: `${remote}`,
+        }
+      },
+      // undefined, { shallow: true }
+      );
+      // setSearchParams({
+      //   keyword: search,
+      // });
+    }
   };
 
   const [showOffCanvas, setShowOffcanvas] = useState(false);
@@ -120,7 +133,10 @@ const NavigationBar = (
     </span>
   );
 
-  console.log(token)
+  // console.log(token)
+
+  const getKeyword = router.query.keyword
+  console.log(getKeyword)
 
   useEffect(() => {
     dispatchGetProfileUser();
@@ -135,7 +151,14 @@ const NavigationBar = (
     // } else {
     //   setIsLoadingNavbar(false)
     // }
-  }, [dispatch, token, refreshToken, role, id ]);
+
+    // if (router.pathname == ("/job") && getKeyword != undefined) {
+    //   // document.getElementById("input-search").set
+    //   document.getElementById("input-search").value = getKeyword;
+    // }
+
+
+  }, [dispatch, router , token, refreshToken, role, id ]);
 
   return (
     <Fragment>
@@ -178,14 +201,15 @@ const NavigationBar = (
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {/* {isLoading ? (
+              {isLoading ? (
                 <div className="col-12 d-flex justify-content-end">
                   <div className="">
                     <div className="spinner-border text-success" style={{ width: "2rem", height: "2rem", opacity: "0.8" }} role="status"></div>
                   </div>
                 </div>
-              ) :  */}
-              {( token ? (
+              ) : 
+              // {
+              ( token ? (
                 router.pathname === "/profile/recuiter" ? (
                   <Fragment>
                     {/* Navbar Recuiter Auth */}
@@ -325,7 +349,7 @@ const NavigationBar = (
                             <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                               <div className="col-12 d-flex border border-1 rounded-pill form-input">
                                 <div className="col-11">
-                                  <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                                  <input className="form-control rounded-pill border-0 "  id="input-search"  type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                                 </div>
                                 <Button
                                   onClick={() => {
@@ -418,7 +442,7 @@ const NavigationBar = (
                             <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                               <div className="col-11 d-flex border border-1 rounded-pill form-input">
                                 <div className="col-11">
-                                  <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                                  <input className="form-control rounded-pill border-0" id="input-search"  type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                                 </div>
                                 <Button
                                   onClick={() => {
@@ -500,7 +524,7 @@ const NavigationBar = (
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <div className="col-11">
-                                <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                                <input className="form-control rounded-pill border-0"  id="input-search"  type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               </div>
                               <Button
                                 onClick={() => {
@@ -556,7 +580,7 @@ const NavigationBar = (
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                             <div className="col-11 d-flex border border-1 rounded-pill form-input">
                               <div className="col-11">
-                                <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                                <input className="form-control rounded-pill border-0"   id="input-search"  type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               </div>
                               <Button
                                 onClick={() => {
@@ -607,8 +631,9 @@ const NavigationBar = (
                     )}
                   </div>
                 </Fragment>
-              ))}
-            {/* } */}
+              ))
+              // }
+             } 
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
