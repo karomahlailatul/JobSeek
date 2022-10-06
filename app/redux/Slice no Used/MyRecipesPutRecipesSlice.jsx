@@ -24,13 +24,13 @@ export const putMyRecipesPutRecipes = createAsyncThunk("MyRecipesPutRecipes/putM
         // console.log(response)
         .then((res) => {
           // console.log(res);
-          toast.success(res.data.message, { autoClose: 2500 });
+          toast.success(res.data.message);
           return res.data;
         })
         .catch((err) => {
           // getMyRecipesPutRecipes()
           // console.log(err);
-          toast.warning(err.response.data.message, { autoClose: 2500 });
+          toast.warning(err.response.data.message);
           return err.response.data
           // alert(err);
         });

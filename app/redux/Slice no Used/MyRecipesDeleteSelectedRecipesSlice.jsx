@@ -17,11 +17,11 @@ export const deletedSelectedMyRecipesDeleteSelected = createAsyncThunk("MyRecipe
           },
         })
         .then((response) => {
-          toast.success(response.data.message, { autoClose: 2500 });
+          toast.success(response.data.message);
           return response.data;
         })
         .catch((err) => {
-          toast.success(err, { autoClose: 2500 });
+          toast.success(err);
           return err.response.data.message;
         });
       return response;

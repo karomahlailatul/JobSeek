@@ -69,12 +69,12 @@ export const getProfileUser = createAsyncThunk("ProfileUser/getProfileUser", asy
 //         })
 //         .then((res) => {
 //           console.log(res);
-//           toast.success("Update Profile Success", { autoClose: 2500 });
+//           toast.success("Update Profile Success");
 //         })
 //         .catch((err) => {
 //           // getProfileUser()
 //           console.log(err);
-//           toast.warning(err.response.data.message, { autoClose: 2500 });
+//           toast.warning(err.response.data.message);
 //           // alert(err);
 //         });
 //       // console.log(response.data)

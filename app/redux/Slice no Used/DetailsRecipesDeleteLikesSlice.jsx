@@ -18,11 +18,11 @@ export const deleteDetailsRecipesDeleteLikes = createAsyncThunk("DetailsRecipesD
           },
         })
         .then((res) => {
-          toast.success(response.data.message, { autoClose: 2500 });
+          toast.success(response.data.message);
           return res.data;
         })
         .catch((err) => {
-          toast.success(err, { autoClose: 2500 });
+          toast.success(err);
           return err.response.data.message;
         });
       return response;

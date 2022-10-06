@@ -34,7 +34,7 @@ export const getSearchRecipes = createAsyncThunk("SearchRecipes/getSearchRecipes
     })
     .then((response) => {
       // alert("delete success");
-      // toast.success(response.data.message, { autoClose: 2500 });
+      // toast.success(response.data.message);
       // setShowModalDeleteSelected(false);
       // getAllProduct();
       // console.log(response.data)
@@ -42,7 +42,7 @@ export const getSearchRecipes = createAsyncThunk("SearchRecipes/getSearchRecipes
     })
     .catch((err) => {
       // alert("delete failed");
-      // toast.success(err, { autoClose: 2500 });
+      // toast.success(err);
       // setShowModalDeleteSelected(false);
       return err.response.data.message;
     });

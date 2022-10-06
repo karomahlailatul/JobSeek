@@ -1,32 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-// import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import axios from "axios";
+
 export const getVerificationEmail = createAsyncThunk("VerificationEmail/getVerificationEmail", async ({ verifyType, usersId, tokenVerification }) => {
-//   console.log(verifyType);
-//   console.log(usersId);
-//   console.log(tokenVerification);
-  try {
-    if (verifyType == "email") {
-      const response = await axios.get(process.env.REACT_APP_API_BACKEND + `users/verify?id=${usersId}&token=${tokenVerification}`, {
+  //   console.log(verifyType);
+  //   console.log(usersId);
+  //   console.log(tokenVerification);
+
+  if (verifyType == "email") {
+    const response = await axios
+      .get(process.env.REACT_APP_API_BACKEND + `users/verify?id=${usersId}&token=${tokenVerification}`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
-          // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
         },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        return err.response.data;
       });
-      // console.log(response)
-      return response;
-    }
-  } catch (error) {
-    
-    // toast.warning(error.response.data.message, { autoClose: 2000, toastId: "errorVerificationEmail" });
-    return error.response;
-    // return JSON.parse(JSON.stringify(error.response.data))
-    
-    // error.response.data[0];
-    // console.log(error.response.data);
+    return response;
   }
 });
 
@@ -43,9 +36,9 @@ const VerificationEmailSlice = createSlice({
     },
     [getVerificationEmail.fulfilled]: (state, action) => {
       state.isLoading = false;
-    //   state.VerificationEmail = action.payload;
+      //   state.VerificationEmail = action.payload;
       if (action.payload !== undefined) {
-        state.VerificationEmail = action.payload.data;
+        state.VerificationEmail = action.payload;
       }
     },
     [getVerificationEmail.rejected]: (state, action) => {

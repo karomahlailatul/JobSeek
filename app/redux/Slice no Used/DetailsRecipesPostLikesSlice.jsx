@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,12 +29,12 @@ export const postDetailsRecipesPostLikes = createAsyncThunk(
           .then((res) => {
             // if (res.data.statusCode === 201) {
               toast.success("Recipes has Likes", {
-                autoClose: 2000,
+                
                 toastId: "successLikes",
               });
             // } else {
             //   toast.warning(res.data.message, {
-            //     autoClose: 2000,
+            //     
             //     toastId: "warningLikes",
             //   });
             // }
@@ -43,7 +43,7 @@ export const postDetailsRecipesPostLikes = createAsyncThunk(
           .catch((err) => {
             // console.log(err);
             toast.warning(err.response.data.message, {
-              autoClose: 2500,
+              
               toastId: "errorLikes",
             });
             return err.response.data;

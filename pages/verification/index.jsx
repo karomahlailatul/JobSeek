@@ -53,15 +53,15 @@ const Verification = ({ status, statusCode, message, verifyType, usersId, tokenV
     document.title = "Verification | JobSeek";
 
     if (verifyType == null || usersId == null || tokenVerification == null) {
-      toast.warning("Url verification invalid", { autoClose: 2000, toastId: "invalidUrlVerificationEmail" });
+      toast.warning("Url verification invalid", {  toastId: "invalidUrlVerificationEmail" });
       Router.push("/");
     } else {
       if (status != null || statusCode != null || message != null) {
         if (statusCode == 200) {
-          toast.success(message, { autoClose: 2000, toastId: "successVerificationEmail" });
+          toast.success(message, {  toastId: "successVerificationEmail" });
           Router.push("/sign-in");
         } else {
-          toast.warning(message, { autoClose: 2000, toastId: "errorVerificationEmail" });
+          toast.warning(message, {  toastId: "errorVerificationEmail" });
           Router.push("/");
         }
       }

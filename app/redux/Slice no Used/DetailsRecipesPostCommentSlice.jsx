@@ -29,12 +29,12 @@ export const postDetailsRecipesPostComment = createAsyncThunk(
           .then((res) => {
             if (res.data.statusCode === 201) {
               toast.success("Your Comment Has Sended", {
-                autoClose: 2000,
+                
                 toastId: "successComment",
               });
             } else {
               toast.warning(res.data.message, {
-                autoClose: 2000,
+                
                 toastId: "warningComment",
               });
             }
@@ -43,7 +43,7 @@ export const postDetailsRecipesPostComment = createAsyncThunk(
           .catch((err) => {
             // console.log(err);
             toast.warning(err.response.data.message, {
-              autoClose: 2500,
+              
               toastId: "errorComment",
             });
             return err.response.data;
