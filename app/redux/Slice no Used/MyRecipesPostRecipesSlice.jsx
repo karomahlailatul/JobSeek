@@ -36,7 +36,7 @@ export const postMyRecipesPostRecipes = createAsyncThunk("MyRecipesPostRecipes/p
       return response;
     }
   } catch (error) {
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
   }
 });
 

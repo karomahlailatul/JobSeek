@@ -22,7 +22,7 @@ export const getRecipesUser = createAsyncThunk("RecipesUser/getRecipesUser", asy
       return response.data;
     }
   } catch (error) {
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
   }
 });
 
@@ -41,12 +41,12 @@ export const putRecipesUser = createAsyncThunk("RecipesUser/putRecipesUser", asy
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           toast.success("Update Profile Success");
         })
         .catch((err) => {
           // getRecipesUser()
-          console.log(err);
+          // console.log(err);
           toast.warning(err.response.data.message);
           // alert(err);
         });
@@ -54,7 +54,7 @@ export const putRecipesUser = createAsyncThunk("RecipesUser/putRecipesUser", asy
       return response;
     }
   } catch (error) {
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
   }
 });
 

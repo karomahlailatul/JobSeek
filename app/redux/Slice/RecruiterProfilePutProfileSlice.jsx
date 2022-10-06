@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import PrivateAxios from "../../axios/PrivateAxios";
 import Cookies from "js-cookie";

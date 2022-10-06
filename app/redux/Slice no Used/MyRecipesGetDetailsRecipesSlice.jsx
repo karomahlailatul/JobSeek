@@ -30,7 +30,7 @@ export const getMyRecipesGetDetailsRecipes = createAsyncThunk(
         // return response.data.data[0];
       }
     } catch (error) {
-      console.log(error.response.data.message);
+      // console.log(error.response.data.message);
     }
   }
 );

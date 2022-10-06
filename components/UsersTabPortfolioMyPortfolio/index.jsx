@@ -101,7 +101,7 @@ const UsersTabPortfolioMyPortfolio = () => {
 
     // </Fragment>
     <Fragment>
-      <div className="tab-pane fade show" id="v-pills-my-portfolio" role="tabpanel" aria-labelledby="v-pills-my-portfolio-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-my-portfolio" role="tabpanel" aria-labelledby="v-pills-my-portfolio-tab" data-toggle="button">
         <div className="my-5">
           <div className="container-fluid">
             <p>portfolio</p>

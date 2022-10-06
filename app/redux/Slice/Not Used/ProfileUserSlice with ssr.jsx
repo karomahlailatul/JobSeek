@@ -23,7 +23,7 @@ export const getProfileUser = createAsyncThunk("ProfileUser/getProfileUser", asy
       return response.data;
     }
   } catch (error) {
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
   }
 });
 
@@ -98,11 +98,11 @@ const ProfileUserSlice = createSlice({
     // },
     [getProfileUser.pending]: (state) => {
       state.isLoading = true;
-      console.log("pending gaes")
+      // console.log("pending gaes")
     },
     [getProfileUser.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log("ready gaes")
+      // console.log("ready gaes")
       // console.log(action.payload)
       // state.ProfileUser= action.payload.data;
       // if (action.payload !== undefined) {
@@ -125,12 +125,12 @@ const ProfileUserSlice = createSlice({
       //   state.user_created_on = action.payload.data.created_on;
       //   state.user_updated_on = action.payload.data.updated_on;
       // }
-      console.log(action.payload)
+      // console.log(action.payload)
     },
     [getProfileUser.rejected]: (state, action) => {
       state.isLoading = false;
       state.isError = action.error;
-      console.log("rejected gaes")
+      // console.log("rejected gaes")
     },
     // [HYDRATE]: (state, action) => {
     //   console.log('HYDRATE', action.payload.data);

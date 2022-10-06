@@ -19,30 +19,7 @@ export async function getStaticProps() {
 
 
 const JobSSG = ({job}) => {
-  
-  // const router = useRouter();
-  // const keyword = ""
-  // const [job, setJob] = useState([]);
-  // const getJob = async () => {
-  //   await axios
-  //     .get(process.env.REACT_APP_API_BACKEND + "job/fulldata?search=" + keyword)
-  //     //  .get(process.env.REACT_APP_API_BACKEND + "product?search=" + search + "&sortby=name&sort=" + sort + "&page=1&limit=24")
-  //     .then((response) => {
-  //       setJob(response.data.data);
-  //       // setProductsPagination(response.data.pagination);
-  //       // console.log(response.data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   // console.log(keyword);
-  // };
 
-  // useEffect(() => {
-  // //  getJob();
-  // }, [keyword])
-
-  // console.log(job)
   
   return (
     <Fragment>
@@ -51,8 +28,6 @@ const JobSSG = ({job}) => {
             <div className="row">
               <div className="col-md-12 justify-content-center">
                 <div className="row">
-                  {/* <h1 className="fw-bold">Find : {keyword}</h1> */}
-                  {/* <p className="fs-6 text-muted">Total product {productsPagination.totalData}</p> */}
                 </div>
               </div>
 
@@ -65,8 +40,7 @@ const JobSSG = ({job}) => {
                       <Card className="container border rounded text-center">
                        
                           <div className="d-flex justify-content-center out-img-product my-2">
-                            {/* <img referrerPolicy="no-referrer" className="img-product" src={item.logo} alt="" />{" "} */}
-                           <Image
+                            <Image
                                   referrerPolicy="no-referrer"
                                   width={140}
                                   height={140}
@@ -84,8 +58,7 @@ const JobSSG = ({job}) => {
                           <p className="fs-6 text-muted">
                             <small>{item.position}</small>
                           </p>
-                          {/* <img className="mb-3" crossOrigin="anonymous" src={require("../../assets/images/product/stars.png")} alt="" /> */}
-                       
+                            
                       </Card>
                     </Link>
                     </div>

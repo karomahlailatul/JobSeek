@@ -15,6 +15,8 @@ import NavBarUsersReducer from "./Slice/NavBarUsersSlice";
 import RecruiterProfileReducer from "./Slice/RecruiterProfileSlice";
 import RecruiterProfilePutProfileReducer from "./Slice/RecruiterProfilePutProfileSlice";
 
+import RecruiterJobMyJobReducer from "./Slice/RecruiterJobMyJobSlice"
+import RecruiterJobDeleteJobReducer from "./Slice/RecruiterJobDeleteJobSlice";
 const rootReducer = combineReducers({
 
   SignIn: SignInReducer,
@@ -30,6 +32,9 @@ const rootReducer = combineReducers({
 
   RecruiterProfile: RecruiterProfileReducer,
   RecruiterProfilePutProfile : RecruiterProfilePutProfileReducer,
+
+  RecruiterJobMyJob :RecruiterJobMyJobReducer,
+  RecruiterJobDeleteJob :RecruiterJobDeleteJobReducer,
 
 });
 

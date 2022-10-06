@@ -4,7 +4,7 @@ import { Pagination } from "react-bootstrap";
 
 import { useRouter } from "next/router";
 
-export default function MyPagination({ total, current }) {
+const MyPagination = ({ total, current }) => {
   const router = useRouter();
 
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -148,3 +148,5 @@ export default function MyPagination({ total, current }) {
 
   return <Pagination>{items}</Pagination>;
 }
+
+export default MyPagination

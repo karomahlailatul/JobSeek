@@ -98,7 +98,7 @@ const UsersTabWorkExperienceMyWorkExperience = () => {
 
     // </Fragment>
     <Fragment>
-      <div className="tab-pane fade show" id="v-pills-my-work-experience" role="tabpanel" aria-labelledby="v-pills-my-work-experience-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-my-work-experience" role="tabpanel" aria-labelledby="v-pills-my-work-experience-tab" data-toggle="button">
         <div className="my-5">
           <div className="container-fluid">
             <p>my-work-experience</p>

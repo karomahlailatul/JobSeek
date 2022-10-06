@@ -5,7 +5,7 @@ import { Fragment } from "react";
 const UsersTabJobApplyMyJobApply = () => {
   return (
     <Fragment>
-      <div className="tab-pane" id="v-pills-my-job-apply" role="tabpanel" aria-labelledby="v-pills-my-job-apply-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-my-job-apply" role="tabpanel" aria-labelledby="v-pills-my-job-apply-tab" data-toggle="button">
         <div className="container-fluid container-nav-pills">
           <div className="col-12 justify-content-start">
             <h4 className="modal-title fw-bold " id="modalProfileLabel">

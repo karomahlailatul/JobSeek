@@ -98,7 +98,7 @@ const UsersTabSkillCreateSkill = () => {
 
     // </Fragment>
     <Fragment>
-      <div className="tab-pane fade show" id="v-pills-create-skill" role="tabpanel" aria-labelledby="v-pills-create-skill-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-create-skill" role="tabpanel" aria-labelledby="v-pills-create-skill-tab" data-toggle="button">
         <div className="my-5">
           <div className="container-fluid">
             <p>create-skill</p>

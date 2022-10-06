@@ -8,14 +8,14 @@ import { useDispatch } from "react-redux";
 
 import { putRecruiterProfilePutProfileSlice } from "../../app/redux/Slice/RecruiterProfilePutProfileSlice";
 
-function RecruiterTabProfileRecruiterProfile({
+const RecruiterTabProfileRecruiterProfile = ({
   RecruiterProfile,
   statusEdit,
   setStatusEdit,
   dispatchGetRecruiterProfile,
   // token, refreshToken,   role, id,
   // isLoading,
-}) {
+}) => {
   // console.log(recruiter);
 
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ function RecruiterTabProfileRecruiterProfile({
   return (
     <Fragment>
       <PreLoader isLoading={isLoading} />
-      <div className="tab-pane active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" data-toggle="button">
+      <div className="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" data-toggle="button">
         <div className="">
           <div className="container">
             <div className="col-12 justify-content-start">

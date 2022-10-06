@@ -22,7 +22,7 @@ const Job = () => {
         // console.log(response.data.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
     // console.log(keyword);
   };
@@ -31,7 +31,7 @@ const Job = () => {
    getJob();
   }, [keyword])
 
-  console.log(job)
+  // console.log(job)
   
   return (
     <Fragment>

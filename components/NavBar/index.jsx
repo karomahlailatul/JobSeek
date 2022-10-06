@@ -40,7 +40,7 @@ const NavigationBar = () =>
       await dispatch(getNavBarUsers()).unwrap();
     };
 
-    const { NavBarUsers, isLoading } = useSelector((state) => state.NavBarUsers);
+    const { NavBarUsers } = useSelector((state) => state.NavBarUsers);
 
     const handleSignOut = () => {
       setToken("");
@@ -137,13 +137,6 @@ const NavigationBar = () =>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 {
-                  isLoading ? (
-                    <div className="col-12 d-flex justify-content-end">
-                      <div className="">
-                        <div className="spinner-border text-success" style={{ width: "2rem", height: "2rem", opacity: "0.8" }} role="status"></div>
-                      </div>
-                    </div>
-                  ) : // {
                    ( token && refreshToken && role && id && lockCredential ? (
                     
                       <Fragment>

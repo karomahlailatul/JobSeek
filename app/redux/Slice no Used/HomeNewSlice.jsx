@@ -12,7 +12,7 @@ export const getHomeNew = createAsyncThunk("HomeNew/getHomeNew", async () => {
     });
     return response.data.data;
   } catch (error) {
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
   }
 });
 

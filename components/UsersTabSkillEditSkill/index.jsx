@@ -98,7 +98,7 @@ const UsersTabSkillEditSkill = () => {
 
     // </Fragment>
     <Fragment>
-      <div className="tab-pane fade show" id="v-pills-skill" role="tabpanel" aria-labelledby="v-pills-skill-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-skill" role="tabpanel" aria-labelledby="v-pills-skill-tab" data-toggle="button">
         <div className="my-5">
           <div className="container-fluid">
             <p>skill</p>

@@ -8,8 +8,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../components/PreLoader/style.css";
 import "../components/NavBar/style.css";
 import "../components/homeSwiper/style.css";
+import "../components/PaginationTable/style.css";
 
 import "../components/RecruiterTabProfileRecruiterProfile/style.css";
+import "../components/RecruiterTabJobMyJob/style.css";
 
 import "../components/UsersTabProfileMyProfile/style.css";
 

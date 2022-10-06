@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 
-function RecruiterTabJobEditJob() {
+const  RecruiterTabJobEditJob=()=> {
   // console.log(recruiter);
 
   return (
     <Fragment>
-      <div className="tab-pane active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" data-toggle="button">
+      <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" data-toggle="button">
         <div className="container-fluid">
-          <p>RecruiterTabJobEditJob</p>
+          <p>tab edit job</p>
         </div>
       </div>
     </Fragment>
