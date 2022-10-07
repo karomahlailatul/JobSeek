@@ -114,7 +114,7 @@ const RecruiterTabProfileRecruiterProfile = ({
                     />
                   </div>
                   <div className="col-12 d-flex justify-content-center upload-btn-wrapper">
-                    <button type="button" className="btn btn-outline-secondary rounded-pill">
+                    <button type="button" className="btn btn-outline-secondary ">
                       Select Logo Company
                     </button>
                     <input className="form-control" type="file" id="formFile" name="logo" onChange={handleUpload} disabled={statusEdit === true ? false : true} />
@@ -225,7 +225,7 @@ const RecruiterTabProfileRecruiterProfile = ({
                     ></textarea>
                   </div>
                   <div className="col-12 d-flex justify-content-center my-4">
-                    <button type="submit" className="btn btn-success rounded-pill px-5" disabled={statusEdit === true ? false : true}>
+                    <button type="submit" className="btn btn-success  px-5" disabled={statusEdit === true ? false : true}>
                       Save
                     </button>
                   </div>

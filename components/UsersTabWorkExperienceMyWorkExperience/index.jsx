@@ -34,7 +34,7 @@ const UsersTabWorkExperienceMyWorkExperience = () => {
     //                           />
     //                         </div>
     //                         <div className="col-12 d-flex justify-content-center">
-    //                           <button type="button" className="btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalAddress">
+    //                           <button type="button" className="btn btn-outline-secondary " data-bs-toggle="modal" data-bs-target="#modalAddress">
     //                             Select Image
     //                           </button>
     //                         </div>
@@ -86,7 +86,7 @@ const UsersTabWorkExperienceMyWorkExperience = () => {
     //                           <input className="form-control " type="date" id="start" name="date_of_birth" min="1920-01-01" max="2050-12-12" />
     //                         </div>
     //                         <div className="col-12 d-flex justify-content-center my-4">
-    //                           <button type="button" className="btn-save-profile  rounded-pill " data-bs-toggle="modal" data-bs-target="#modalAddress">
+    //                           <button type="button" className="btn-save-profile   " data-bs-toggle="modal" data-bs-target="#modalAddress">
     //                             Save
     //                           </button>
     //                         </div>

@@ -46,3 +46,17 @@ a {
  margin-top: 317px;
  margin-bottom: 318px;
 }
+
+.form-input {
+  border-radius: 8px !important;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+
+.search-skill {
+  width: 500px !important;
+}

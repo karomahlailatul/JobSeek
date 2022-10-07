@@ -175,7 +175,7 @@ const recruiter = () => {
                   />
 
                   <RecruiterTabJobMyJob  />
-                  <RecruiterTabJobCreateJob />
+                  <RecruiterTabJobCreateJob id={id}/>
 
                   <RecruiterTabJobApplyStatusJob />
                 </div>

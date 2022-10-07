@@ -100,10 +100,10 @@ const RecruiterTabJobMyJob = () => {
                 </h4>
               </div>
               <div className="col-12 d-flex">
-                <div className="col-10 d-flex border border-1 rounded-pill form-input my-3">
+                <div className="col-10 d-flex border border-1  form-input my-3">
                   <div className="col-11 ">
                     <input
-                      className="form-control rounded-pill border-0 "
+                      className="form-control  border-0 "
                       id="input-search-table"
                       type="search"
                       placeholder="Search"

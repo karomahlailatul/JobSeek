@@ -258,7 +258,7 @@ const SearchRecipes = () => {
                               {item.description}
                             </p>
                             <div className="d-flex justify-content-center">
-                              <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">
+                              <button className="btn btn-warning  mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">
                                 Learn More
                               </button>
                             </div>

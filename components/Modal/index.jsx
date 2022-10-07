@@ -33,7 +33,7 @@ const Modal = ({ modalType, dataCheckBoxValueList, dispatchGetRecruiterJobMyJob 
       <Fragment>
         <PreLoader isLoading={isLoading} />
         <div className="col-2 d-flex justify-content-center align-items-center">
-          <button className="btn btn-danger rounded-pill px-4" alt="Edit Icon" data-bs-toggle="modal" data-bs-target="#modal" style={{ display: dataCheckBoxValueList ? "block" : "none" }}>
+          <button className="btn btn-danger px-4" alt="Edit Icon" data-bs-toggle="modal" data-bs-target="#modal" style={{ display: dataCheckBoxValueList ? "block" : "none" }}>
             Delete
           </button>
         </div>

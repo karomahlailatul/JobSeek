@@ -138,7 +138,7 @@ const UsersTabProfileMyProfile = ({
                     />
                   </div>
                   <div className="col-12 d-flex justify-content-center upload-btn-wrapper">
-                    <button type="button" className="btn btn-outline-secondary rounded-pill" disabled={statusEdit === true ? false : true}>
+                    <button type="button" className="btn btn-outline-secondary " disabled={statusEdit === true ? false : true}>
                       Select Image
                     </button>
                     <input className="form-control" type="file" id="formFile" name="picture" disabled={statusEdit === true ? false : true} onChange={handleUpload} />
@@ -303,7 +303,7 @@ const UsersTabProfileMyProfile = ({
                   </div>
 
                   <div className="col-12 d-flex justify-content-center my-4">
-                    <button type="submit" className="btn btn-success rounded-pill px-5" disabled={statusEdit === true ? false : true}>
+                    <button type="submit" className="btn btn-success  px-5" disabled={statusEdit === true ? false : true}>
                       Save
                     </button>
                   </div>

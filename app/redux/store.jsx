@@ -17,6 +17,10 @@ import RecruiterProfilePutProfileReducer from "./Slice/RecruiterProfilePutProfil
 
 import RecruiterJobMyJobReducer from "./Slice/RecruiterJobMyJobSlice"
 import RecruiterJobDeleteJobReducer from "./Slice/RecruiterJobDeleteJobSlice";
+import RecruiterJobPostJobReducer from "./Slice/RecruiterJobPostJobSlice"
+
+import SkillReducer from "./Slice/Skill";
+
 const rootReducer = combineReducers({
 
   SignIn: SignInReducer,
@@ -35,6 +39,9 @@ const rootReducer = combineReducers({
 
   RecruiterJobMyJob :RecruiterJobMyJobReducer,
   RecruiterJobDeleteJob :RecruiterJobDeleteJobReducer,
+  RecruiterJobPostJob : RecruiterJobPostJobReducer,
+
+  Skill : SkillReducer,
 
 });
 

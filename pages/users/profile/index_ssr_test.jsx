@@ -104,7 +104,7 @@ const UsersProfile = () => {
                                                             alt="profile" /> */}
                             </div>
                             <div className="col-12 d-flex justify-content-center">
-                              <button type="button" className="btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalAddress">
+                              <button type="button" className="btn btn-outline-secondary " data-bs-toggle="modal" data-bs-target="#modalAddress">
                                 Select Image
                               </button>
                             </div>
@@ -156,7 +156,7 @@ const UsersProfile = () => {
                               <input className="form-control " type="date" id="start" name="date_of_birth" min="1920-01-01" max="2050-12-12" />
                             </div>
                             <div className="col-12 d-flex justify-content-center my-4">
-                              <button type="button" className="btn-save-profile  rounded-pill " data-bs-toggle="modal" data-bs-target="#modalAddress">
+                              <button type="button" className="btn-save-profile   " data-bs-toggle="modal" data-bs-target="#modalAddress">
                                 Save
                               </button>
                             </div>
@@ -274,10 +274,10 @@ const UsersProfile = () => {
                                 </div>
                                 <div className="col-12 d-flex justify-content-end my-2">
                                   <div className="col-6 d-flex justify-content-center">
-                                    <button className="btn-cancel-address rounded-pill me-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
+                                    <button className="btn-cancel-address  me-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
                                       Cancel
                                     </button>
-                                    <button className="btn-save-address rounded-pill ms-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
+                                    <button className="btn-save-address  ms-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
                                       Save
                                     </button>
                                   </div>
@@ -352,10 +352,10 @@ const UsersProfile = () => {
                                 </div>
                                 <div className="col-12 d-flex justify-content-end my-2">
                                   <div className="col-6 d-flex justify-content-center">
-                                    <button className="btn-cancel-address rounded-pill me-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
+                                    <button className="btn-cancel-address  me-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
                                       Cancel
                                     </button>
-                                    <button className="btn-save-address rounded-pill ms-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
+                                    <button className="btn-save-address  ms-1 w-100" data-bs-toggle="modal" data-bs-target="#modalAddress" data-bs-dismiss="modal" type="button">
                                       Save
                                     </button>
                                   </div>

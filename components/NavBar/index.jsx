@@ -146,10 +146,10 @@ const NavigationBar = () =>
                           {size.width <= 992 ? (
                             <Fragment>
                               <div className="col-xl-8 col-lg-8">
-                                <div className="col-12 d-flex border border-1 rounded-pill form-input">
+                                <div className="col-12 d-flex border border-1  form-input">
                                   <div className="col-11">
                                     <input
-                                      className="form-control rounded-pill border-0 "
+                                      className="form-control border-0 "
                                       id="input-search"
                                       type="search"
                                       placeholder="Search"
@@ -199,7 +199,7 @@ const NavigationBar = () =>
                                       router.push("/users/profile");
                                       setShowOffcanvas(false);
                                     }}
-                                    className=" rounded-pill block  "
+                                    className=" block  "
                                     type="button"
                                   >
                                     <p className="my-auto"> My Profile</p>
@@ -214,7 +214,7 @@ const NavigationBar = () =>
                                         router.push("/recruiter/profile");
                                         setShowOffcanvas(false);
                                       }}
-                                      className=" rounded-pill block  "
+                                      className=" block  "
                                       type="button"
                                     >
                                       <p className="my-auto"> Profile Recruiter</p>
@@ -230,7 +230,7 @@ const NavigationBar = () =>
                                       setShowOffcanvas(false);
                                       handleSignOut();
                                     }}
-                                    className=" rounded-pill block  "
+                                    className="  block  "
                                     type="button"
                                   >
                                     <p className="my-auto">Sign Out</p>
@@ -242,10 +242,10 @@ const NavigationBar = () =>
                             <Fragment>
                          
                               <div className="col-xl-8 col-lg-8">
-                                <div className="col-11 d-flex border border-1 rounded-pill form-input">
+                                <div className="col-11 d-flex border border-1  form-input">
                                   <div className="col-11">
                                     <input
-                                      className="form-control rounded-pill border-0"
+                                      className="form-control  border-0"
                                       id="input-search"
                                       type="search"
                                       placeholder="Search"
@@ -318,10 +318,10 @@ const NavigationBar = () =>
                              {size.width <= 992 ? (
                           <Fragment>
                             <div className="col-xl-8 col-lg-8">
-                              <div className="col-12 d-flex border border-1 rounded-pill form-input">
+                              <div className="col-12 d-flex border border-1  form-input">
                                 <div className="col-11">
                                   <input
-                                    className="form-control rounded-pill border-0"
+                                    className="form-control  border-0"
                                     id="input-search"
                                     type="search"
                                     placeholder="Search"
@@ -344,7 +344,7 @@ const NavigationBar = () =>
                                     router.push("/sign-in");
                                     setShowOffcanvas(false);
                                   }}
-                                  className=" rounded-pill block "
+                                  className="  block "
                                   type="button"
                                 >
                                   <p className="my-auto">Sign In</p>
@@ -357,7 +357,7 @@ const NavigationBar = () =>
                                     router.push("/sign-up");
                                     setShowOffcanvas(false);
                                   }}
-                                  className=" rounded-pill block  "
+                                  className="  block  "
                                   type="button"
                                 >
                                   <p className="my-auto"> Sign Up</p>
@@ -368,10 +368,10 @@ const NavigationBar = () =>
                         ) : (
                           <Fragment>
                             <div className="col-xl-8 col-lg-8">
-                              <div className="col-11 d-flex border border-1 rounded-pill form-input">
+                              <div className="col-11 d-flex border border-1  form-input">
                                 <div className="col-11">
                                   <input
-                                    className="form-control rounded-pill border-0"
+                                    className="form-control  border-0"
                                     id="input-search"
                                     type="search"
                                     placeholder="Search"
@@ -394,7 +394,7 @@ const NavigationBar = () =>
                                   onClick={() => {
                                     router.push("/sign-in");
                                   }}
-                                  className=" rounded-pill block "
+                                  className="  block "
                                   type="button"
                                 >
                                   <p className="my-auto">Sign In</p>
@@ -406,7 +406,7 @@ const NavigationBar = () =>
                                   onClick={() => {
                                     router.push("/sign-up");
                                   }}
-                                  className=" rounded-pill block  "
+                                  className="  block  "
                                   type="button"
                                 >
                                   <p className="my-auto"> Sign Up</p>

@@ -29,8 +29,8 @@ const UsersTabJobApplyMyJobApply = () => {
             <div className="tab-pane active" id="v-pills-all-job-apply" role="tabpanel" aria-labelledby="v-pills-all-job-apply-tab" data-toggle="button">
               <div className="vh-100">
                 <div className="col-4 my-3">
-                  <form className="form-search d-flex border border-1 rounded-pill ">
-                    <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" />
+                  <form className="form-search d-flex border border-1  ">
+                    <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn-search" type="submit">
                       </button>
                   </form>
@@ -42,8 +42,8 @@ const UsersTabJobApplyMyJobApply = () => {
             <div className="tab-pane" id="v-pills-approved-job-apply" role="tabpanel" aria-labelledby="v-pills-approved-job-apply-tab" data-toggle="button">
               <div className="vh-100">
                 <div className="col-4 my-3">
-                  <form className="form-search d-flex border border-1 rounded-pill ">
-                    <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" />
+                  <form className="form-search d-flex border border-1  ">
+                    <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn-search" type="submit">
                      </button>
                   </form>
@@ -55,8 +55,8 @@ const UsersTabJobApplyMyJobApply = () => {
             <div className="tab-pane" id="v-pills-rejected-job-apply" role="tabpanel" aria-labelledby="v-pills-rejected-job-apply-tab" data-toggle="button">
               <div className="vh-100">
                 <div className="col-4 my-3">
-                  <form className="form-search d-flex border border-1 rounded-pill ">
-                    <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" />
+                  <form className="form-search d-flex border border-1  ">
+                    <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn-search" type="submit">
                       </button>
                   </form>
