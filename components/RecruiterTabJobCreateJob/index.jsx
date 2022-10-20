@@ -5,7 +5,7 @@ import { postRecruiterJobPostJob } from "../../app/redux/Slice/RecruiterJobPostJ
 
 import { getSkill } from "../../app/redux/Slice/Skill";
 
-import PreLoader from "../../components/PreLoader";
+// import PreLoader from "../../components/PreLoader";
 
 import Select from "react-select";
 import { toast } from "react-toastify";

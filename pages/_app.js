@@ -35,19 +35,21 @@ import "./sign-in/style.css";
 
 import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
-import NavigationBar from "../components/NavBar";
-import Footer from "../components/Footer/index";
+// import NavigationBar from "../components/NavBar";
+// import Footer from "../components/Footer/index";
 
 import { wrapper } from "../app/redux/store";
 import { Provider } from "react-redux";
 
 import SSRProvider from "react-bootstrap/SSRProvider";
 
-const MyApp = ({ Component, id, role, token, refreshToken, lockCredential, ...rest }) => {
+const MyApp = ({ Component, 
+  // id, role, token, refreshToken, lockCredential,
+   ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
@@ -59,11 +61,11 @@ const MyApp = ({ Component, id, role, token, refreshToken, lockCredential, ...re
       <SSRProvider>
         <Fragment>
           <Provider store={store}>
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar id={id} role={role} token={token} refreshToken={refreshToken} lockCredential={lockCredential} />}
+            {/* {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar id={id} role={role} token={token} refreshToken={refreshToken} lockCredential={lockCredential} />} */}
 
             <Component {...props.pageProps} />
 
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />}
+            {/* {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />} */}
           </Provider>
         </Fragment>
         <ToastContainer position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover />

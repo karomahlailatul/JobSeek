@@ -16,9 +16,15 @@ const RecruiterTabJobMyJob = () => {
   
   const dispatch = useDispatch();
 
-  const [showMyJob, setShowMyJob] = useState(true);
+  const [showMyJob, 
+    // setShowMyJob
+  ] = useState(true);
 
-  const { isLoading, RecruiterJobMyJob, statusCode, pagination_currentPage, pagination_totalData, pagination_limit, pagination_totalPage } = useSelector((state) => state.RecruiterJobMyJob);
+  const { isLoading, RecruiterJobMyJob, 
+    // statusCode, 
+    pagination_currentPage, 
+    // pagination_totalData, pagination_limit, 
+    pagination_totalPage } = useSelector((state) => state.RecruiterJobMyJob);
 
   const [keyword, setKeyword] = useState(null);
   
