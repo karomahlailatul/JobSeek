@@ -37,8 +37,8 @@ import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
 import { useRouter } from "next/router";
 
-// import NavigationBar from "../components/NavBar";
-// import Footer from "../components/Footer/index";
+import NavigationBar from "../components/NavBar";
+import Footer from "../components/Footer/index";
 
 import { wrapper } from "../app/redux/store";
 import { Provider } from "react-redux";
