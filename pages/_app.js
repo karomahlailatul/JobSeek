@@ -46,7 +46,7 @@ import { Provider } from "react-redux";
 import SSRProvider from "react-bootstrap/SSRProvider";
 
 const MyApp = ({ Component, 
-  // id, role, token, refreshToken, lockCredential,
+  id, role, token, refreshToken, lockCredential,
    ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
