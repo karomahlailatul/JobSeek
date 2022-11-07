@@ -17,7 +17,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     await store.dispatch(getVerificationEmail({ verifyType, usersId, tokenVerification }));
   }
   const value = await store.getState().VerificationEmail.VerificationEmail;
-  
+
   const status = value?.status || null;
   const statusCode = value?.statusCode || null;
   const message = value?.message || null;
@@ -37,8 +37,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
   };
 });
 
-const Verification = ({ status, statusCode, message, verifyType, usersId, tokenVerification, isLoading }) => {
-  
+const Verification = ({ status, statusCode, message, verifyType, usersId, tokenVerification }) => {
   // console.log("status : ",status);
   // console.log("statusCode : ",statusCode);
   // console.log("message : ",message);
@@ -48,25 +47,29 @@ const Verification = ({ status, statusCode, message, verifyType, usersId, tokenV
   // console.log("isLoading : ",isLoading);
 
   useEffect(() => {
-    document.title = "Verification | JobSeek";
+    document.title = "Verification Email | JobSeek";
 
     if (verifyType == null || usersId == null || tokenVerification == null) {
-      toast.warning("Url verification invalid", {  toastId: "invalidUrlVerificationEmail" });
+      toast.warning("Url verification invalid", { toastId: "invalidUrlVerificationEmail" });
       Router.push("/");
     } else {
       if (status != null || statusCode != null || message != null) {
         if (statusCode == 200) {
-          toast.success(message, {  toastId: "successVerificationEmail" });
+          toast.success(message, { toastId: "successVerificationEmail" });
           Router.push("/sign-in");
         } else {
-          toast.warning(message, {  toastId: "errorVerificationEmail" });
+          toast.warning(message, { toastId: "errorVerificationEmail" });
           Router.push("/");
         }
       }
     }
-  }, [status, statusCode, message, verifyType, usersId, tokenVerification, isLoading]);
+  }, [status, statusCode, message, verifyType, usersId, tokenVerification]);
 
-  return <Fragment>{verifyType == null || usersId == null || tokenVerification == null ? <PreLoader isLoading={false} /> : null}</Fragment>;
+  return (
+    <Fragment>
+      <PreLoader isLoading={true} />
+    </Fragment>
+  );
 };
 
 export default Verification;

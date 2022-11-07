@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { postSignUpUser } from "../../app/redux/Slice/SignUpUserSlice";
 
 import PreLoader from "../../components/PreLoader";
-
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 const UserCreate = () => {
   const dispatch = useDispatch();
 
@@ -43,7 +44,6 @@ const UserCreate = () => {
 
     await dispatch(postSignUpUser({ param, dataUser }))
       .unwrap()
-
       .then((item) => {
         if (item?.statusCode === 201) {
           router.push("/sign-in");
@@ -58,10 +58,31 @@ const UserCreate = () => {
   };
 
   const { isLoading } = useSelector((state) => state.SignUpUser);
+  const { UsersProfile } = useSelector((state) => state.UsersProfile);
 
   useEffect(() => {
     document.title = "Sign Up | JobSeek";
   });
+
+  // SSO Google
+  const redirectgoogle = async () => {
+    const urlBeGoogle = `${process.env.REACT_APP_API_BACKEND}users/auth/google`;
+    let height = 800;
+    let width = 700;
+    let left = (screen.width - width) / 2;
+    let top = (screen.height - height) / 2;
+    window.open(urlBeGoogle, "center window", "resizable = yes, width=" + width + ", height=" + height + ", top=" + top + ", left=" + left);
+  };
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      if (Cookies.get("token") && Cookies.get("refreshToken") && Cookies.get("id") && Cookies.get("role") && Cookies.get("lockCredential")) {
+        clearInterval(timer);
+        router.push("/");
+        toast.success("Sign In Success. Welcome " + UsersProfile.name, { toastId: "successSignIn" });
+      }
+    }, 250);
+  }, []);
 
   return (
     <Fragment>
@@ -115,6 +136,13 @@ const UserCreate = () => {
                 </Link>
               </div>
             </form>
+            <hr />
+            <button type="button" className="col-12 btn btn-success btn-submit" onClick={redirectgoogle}>
+              <div className="d-flex justify-content-center align-items-center text-center">
+                <Image src={"/assets/icons/google_g_logo.svg"} width="30px" height="30px" className="align-items-center" alt="" />
+                <p className="ms-2 my-auto">Continue with Google</p>
+              </div>
+            </button>
           </div>
         </div>
       </div>

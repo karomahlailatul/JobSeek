@@ -8,6 +8,7 @@ import { postSignIn } from "../../app/redux/Slice/SignInSlice";
 
 import PreLoader from "../../components/PreLoader";
 
+import Cookies from "js-cookie";
 const SignIn = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -42,6 +43,25 @@ const SignIn = () => {
   useEffect(() => {
     document.title = "Sign In | JobSeek";
   });
+
+  // SSO Google
+  const redirectgoogle = async () => {
+    const urlBeGoogle = `${process.env.REACT_APP_API_BACKEND}users/auth/google`;
+    let height = 800;
+    let width = 700;
+    let left = (screen.width - width) / 2;
+    let top = (screen.height - height) / 2;
+    window.open(urlBeGoogle, "center window", "resizable = yes, width=" + width + ", height=" + height + ", top=" + top + ", left=" + left);
+  };
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      if (Cookies.get("token") && Cookies.get("refreshToken") && Cookies.get("id") && Cookies.get("role")&& Cookies.get("lockCredential")) {
+        clearInterval(timer);
+        router.push("/");
+      }
+    }, 250);
+  }, []);
 
   return (
     <Fragment>
@@ -87,6 +107,13 @@ const SignIn = () => {
                   </Link>
                 </div>
               </form>
+              <hr/>
+              <button type="button" className="col-12 btn btn-success btn-submit" onClick={redirectgoogle}>
+                <div className="d-flex justify-content-center align-items-center text-center">
+                  <Image src={"/assets/icons/google_g_logo.svg"} width="30px" height="30px" className="align-items-center" alt="" />
+                  <p className="ms-2 my-auto">Continue with Google</p>
+                </div>
+              </button>
             </div>
           </div>
         </div>
