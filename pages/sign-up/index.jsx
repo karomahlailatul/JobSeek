@@ -107,17 +107,17 @@ const UserCreate = () => {
                     Recruiter
                   </label>
                 </div>
-                <input className="form-control mt-3" type="text" placeholder="name" name="name" value={dataUser.name} onChange={handleChange} />
-                <input className="form-control mt-3" type="text" placeholder="email" name="email" value={dataUser.email} onChange={handleChange} />
-                <input className="form-control mt-3 hidden-textbox" type="text" placeholder="phone" name="phone" value={dataUser.phone} onChange={handleChange} />
+                <input className="form-control mt-3" type="text" placeholder="Name" name="name" value={dataUser.name} onChange={handleChange} />
+                <input className="form-control mt-3" type="text" placeholder="Email" name="email" value={dataUser.email} onChange={handleChange} />
+                <input className="form-control mt-3 hidden-textbox" type="text" placeholder="Phone" name="phone" value={dataUser.phone} onChange={handleChange} />
 
                 <div id="recruiter" className="hide" style={{ display: toggle ? "none" : "block" }}>
-                  <input className="form-control mt-3 hidden-textbox" type="text" placeholder="company" name="company" value={dataUser.company} onChange={handleChange} />
+                  <input className="form-control mt-3 hidden-textbox" type="text" placeholder="Company" name="company" value={dataUser.company} onChange={handleChange} />
 
-                  <input className="form-control mt-3 hidden-textbox" type="text" placeholder="position" name="position" value={dataUser.position} onChange={handleChange} />
+                  <input className="form-control mt-3 hidden-textbox" type="text" placeholder="Position" name="position" value={dataUser.position} onChange={handleChange} />
                 </div>
 
-                <input className="form-control mt-3" type="password" placeholder="password" name="password" value={dataUser.password} onChange={handleChange} />
+                <input className="form-control mt-3" type="password" placeholder="Password" name="password" value={dataUser.password} onChange={handleChange} />
               </div>
               <div className="d-flex justify-content-end">
                 <Link className="text-danger text-redirect" href="/reset-password">

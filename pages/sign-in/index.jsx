@@ -76,8 +76,8 @@ const SignIn = () => {
             <div className=" justify-content-center">
               <form onSubmit={handleLogin}>
                 <div className="my-3 mb-3">
-                  <input className="form-control mt-3" type="text" placeholder="email" name="email" value={data.email} onChange={handleChange} />
-                  <input className="form-control mt-3" type="password" placeholder="password" name="password" value={data.password} onChange={handleChange} />
+                  <input className="form-control mt-3" type="text" placeholder="Email" name="email" value={data.email} onChange={handleChange} />
+                  <input className="form-control mt-3" type="password" placeholder="Password" name="password" value={data.password} onChange={handleChange} />
                 </div>
 
                 <div className="d-flex justify-content-start my-2">
