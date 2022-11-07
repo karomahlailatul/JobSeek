@@ -1,9 +1,11 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, 
+  // useEffect
+ } from "react";
 import Card from "react-bootstrap/Card";
 import Link from "next/link";
 import { getJobDetails } from "../../app/redux/Slice/JobDetailsSlice";
-import { toast } from "react-toastify";
-import PreLoader from "../../components/PreLoader";
+// import { toast } from "react-toastify";
+// import PreLoader from "../../components/PreLoader";
 import { wrapper } from "../../app/redux/store";
 import Image from "next/image";
 
@@ -15,13 +17,13 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faHandHoldingDollar } from "@fortawesome/free-solid-svg-icons";
 import { faSuitcase } from "@fortawesome/free-solid-svg-icons";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
-import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+// import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+// import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { faCircleDown } from "@fortawesome/free-regular-svg-icons";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+// import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faBusinessTime } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import { getJobSearch } from "../../app/redux/Slice/JobSearchSlice";
@@ -37,7 +39,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
   const token = ctx?.req?.cookies?.token || null;
   const refreshToken = ctx?.req?.cookies?.refreshToken || null;
   const role = ctx?.req?.cookies?.role || null;
-  const lockCredential = ctx?.req?.cookies?.lockCredential || null;
+  // const lockCredential = ctx?.req?.cookies?.lockCredential || null;
 
   // if (id && token && refreshToken && role && lockCredential) {
   //   // if ( role != "recruiter") {
@@ -111,7 +113,11 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
   };
 });
 
-const JobDetails = ({ JobDetails, isLoading, JobSearchFamiliar, userId, token, refreshToken, role }) => {
+const JobDetails = ({ JobDetails, 
+  // isLoading,
+   JobSearchFamiliar, userId,
+    // token, refreshToken, role
+   }) => {
   const {
     // id,
     name,
@@ -123,31 +129,31 @@ const JobDetails = ({ JobDetails, isLoading, JobSearchFamiliar, userId, token, r
     max_salary,
     count_apply,
     experience_time,
-    available,
-    recruiter_id,
+    // available,
+    // recruiter_id,
     // promotion_until,
     created_on,
     updated_on,
     recruiter_users_id,
-    recruiter_position,
+    // recruiter_position,
     recruiter_company,
-    recruiter_email,
+    // recruiter_email,
     recruiter_address,
     recruiter_logo,
-    recruiter_phone,
-    recruiter_description,
-    users_name,
-    users_email,
-    users_gender,
-    users_phone,
-    users_date_of_birth,
-    users_picture,
-    users_job_desk,
-    users_domicile,
-    users_location,
-    users_description,
-    users_created_on,
-    skill_id,
+    // recruiter_phone,
+    // recruiter_description,
+    // users_name,
+    // users_email,
+    // users_gender,
+    // users_phone,
+    // users_date_of_birth,
+    // users_picture,
+    // users_job_desk,
+    // users_domicile,
+    // users_location,
+    // users_description,
+    // users_created_on,
+    // skill_id,
     skill_name,
   } = JobDetails;
 

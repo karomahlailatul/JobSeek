@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useState, Fragment } from "react";
 import { deleteRecruiterJobDeleteJob } from "../../app/redux/Slice/RecruiterJobDeleteJobSlice";
-import PreLoader from "../PreLoader";
+// import PreLoader from "../PreLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";

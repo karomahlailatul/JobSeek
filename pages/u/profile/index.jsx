@@ -1,7 +1,9 @@
 import { useState, Fragment } from "react";
 import Image from "next/image";
 
-import { useDispatch, useSelector } from "react-redux";
+import { 
+  // useDispatch,
+   useSelector } from "react-redux";
 
 // import { useRouter } from "next/router";
 

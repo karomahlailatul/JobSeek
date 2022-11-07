@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect, useRef } from "react";
+import { useState, Fragment, useEffect } from "react";
 import Router, { useRouter } from "next/router";
 
 import Button from "react-bootstrap/Button";
