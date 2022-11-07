@@ -17,9 +17,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     await store.dispatch(getVerificationEmail({ verifyType, usersId, tokenVerification }));
   }
   const value = await store.getState().VerificationEmail.VerificationEmail;
-
-  // console.log(value);
-
+  
   const status = value?.status || null;
   const statusCode = value?.statusCode || null;
   const message = value?.message || null;

@@ -1,7 +1,5 @@
 import { Fragment } from "react";
 
-// import Image from "next/image";
-
 const UsersTabJobApplyMyJobApply = () => {
   return (
     <Fragment>
@@ -31,8 +29,7 @@ const UsersTabJobApplyMyJobApply = () => {
                 <div className="col-4 my-3">
                   <form className="form-search d-flex border border-1  ">
                     <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn-search" type="submit">
-                      </button>
+                    <button className="btn-search" type="submit"></button>
                   </form>
                   <p>all job apply</p>
                 </div>
@@ -44,8 +41,7 @@ const UsersTabJobApplyMyJobApply = () => {
                 <div className="col-4 my-3">
                   <form className="form-search d-flex border border-1  ">
                     <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn-search" type="submit">
-                     </button>
+                    <button className="btn-search" type="submit"></button>
                   </form>
                   <p>Approved Job</p>
                 </div>
@@ -57,8 +53,7 @@ const UsersTabJobApplyMyJobApply = () => {
                 <div className="col-4 my-3">
                   <form className="form-search d-flex border border-1  ">
                     <input className="form-control  border-0 " type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn-search" type="submit">
-                      </button>
+                    <button className="btn-search" type="submit"></button>
                   </form>
                   <p> Rejected Job</p>
                 </div>

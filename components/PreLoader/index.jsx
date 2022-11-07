@@ -4,22 +4,31 @@ const PreLoader = ({ isLoading }) => {
   return (
     <Fragment>
       {isLoading ? (
+        // <Fragment>
+        //   <div className="preloader text-center">
+        //     <div className="loading">
+        //       <div className="spinner-border text-success mx-auto" style={{width: "3rem", height: "3rem"}} role="status"></div>
+        //       <p className="mt-5">Please wait...</p>
+        //     </div>
+        //   </div>
+        // </Fragment>
+        // <Fragment>
+        //   <div className="preloader text-center">
+        //     <div className="loading">
+        //       <div className="spinner-border text-success mx-auto" style={{ width: "4rem", height: "4rem" }} role="status"></div>
+        //       <p className="text-success">Please wait...</p> 
+        //     </div>
+        //   </div>
+        // </Fragment>
         <Fragment>
-          <div className="preloader">
-            <div className="loading">
-              <div className="spinner-border text-success" style={{width: "3rem", height: "3rem"}} role="status"></div>
-              {/* <div className="loader14">
-                    <div className="loader-inner">
-                        <div className="box-1"></div>
-                        <div className="box-2"></div>
-                        <div className="box-3"></div>
-                        <div className="box-4"></div>
-                    </div>
-                    <span className="text">loading</span>
-                </div> */}
-            </div>
+        <div className="preloader text-center my-auto">
+          <div className="loading">
+            <div className="spinner-border text-success mx-auto" style={{ width: "4rem", height: "4rem" }} role="status"></div>
+            {/* <span className="loader"></span> */}
+             <p className="text-success">Please wait...</p> 
           </div>
-        </Fragment>
+        </div>
+      </Fragment>
       ) : null}
     </Fragment>
   );

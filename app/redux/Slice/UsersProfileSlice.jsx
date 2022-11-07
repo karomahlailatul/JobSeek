@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import PrivateAxios from "../../axios/PrivateAxios";
-import Cookies from "js-cookie";
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-export const getUsersProfile = createAsyncThunk("UsersProfile/getUsersProfile", async () => {
-  let api = PrivateAxios();
-  const token = Cookies.get("token");
+export const getUsersProfile = createAsyncThunk("UsersProfile/getUsersProfile", async (token, refreshToken) => {
+  let api = PrivateAxiosSSR({ token, refreshToken });
+  
   if (token) {
     const response = await api
       .get(process.env.REACT_APP_API_BACKEND + "users/profile", {
@@ -36,11 +35,8 @@ const UsersProfileSlice = createSlice({
     },
     [getUsersProfile.fulfilled]: (state, action) => {
       state.isLoading = false;
-      if (action.payload !== undefined) {
+      if (action.payload) {
         state.UsersProfile = action.payload.data;
-        const dob = action.payload.data.date_of_birth.split("T");
-        state.UsersProfile.date_of_birth = dob[0];
-        state.user_picture = action.payload.data.picture;
       }
     },
     [getUsersProfile.rejected]: (state, action) => {

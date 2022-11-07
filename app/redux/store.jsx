@@ -8,41 +8,36 @@ import UsersProfileReducer from "./Slice/UsersProfileSlice";
 import UsersProfilePutProfileReducer from "./Slice/UsersProfilePutProfileSlice";
 
 import VerificationEmailReducer from "./Slice/VerificationEmailSlice";
-import JobSearchReducer from "./Slice/JobSearchSlice";
-
-import NavBarUsersReducer from "./Slice/NavBarUsersSlice";
 
 import RecruiterProfileReducer from "./Slice/RecruiterProfileSlice";
 import RecruiterProfilePutProfileReducer from "./Slice/RecruiterProfilePutProfileSlice";
 
-import RecruiterJobMyJobReducer from "./Slice/RecruiterJobMyJobSlice"
 import RecruiterJobDeleteJobReducer from "./Slice/RecruiterJobDeleteJobSlice";
-import RecruiterJobPostJobReducer from "./Slice/RecruiterJobPostJobSlice"
+import RecruiterJobPostJobReducer from "./Slice/RecruiterJobPostJobSlice";
 
-import SkillReducer from "./Slice/Skill";
+import SkillReducer from "./Slice/SkillSlice";
+import JobSearchReducer from "./Slice/JobSearchSlice";
+import JobDetailsReducer from "./Slice/JobDetailsSlice";
 
 const rootReducer = combineReducers({
-
   SignIn: SignInReducer,
   SignUpUser: SignUpUserReducer,
 
   UsersProfile: UsersProfileReducer,
-  UsersProfilePutProfile : UsersProfilePutProfileReducer,
+  UsersProfilePutProfile: UsersProfilePutProfileReducer,
 
-  NavBarUsers: NavBarUsersReducer,
   VerificationEmail: VerificationEmailReducer,
 
   JobSearch: JobSearchReducer,
+  JobDetails: JobDetailsReducer,
 
   RecruiterProfile: RecruiterProfileReducer,
-  RecruiterProfilePutProfile : RecruiterProfilePutProfileReducer,
+  RecruiterProfilePutProfile: RecruiterProfilePutProfileReducer,
 
-  RecruiterJobMyJob :RecruiterJobMyJobReducer,
-  RecruiterJobDeleteJob :RecruiterJobDeleteJobReducer,
-  RecruiterJobPostJob : RecruiterJobPostJobReducer,
+  RecruiterJobDeleteJob: RecruiterJobDeleteJobReducer,
+  RecruiterJobPostJob: RecruiterJobPostJobReducer,
 
-  Skill : SkillReducer,
-
+  Skill: SkillReducer,
 });
 
 const reducer = (state, action) => {

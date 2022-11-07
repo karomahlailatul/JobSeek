@@ -1,39 +1,45 @@
-.pagination .active .page-link {
-    color: var(--bs-white) !important;
-    background-color: var(--bs-success);
-    border-color: var(--bs-success);
-  }
-  
-  .pagination .page-link {
-    color: var(--bs-success) !important;
-    background-color: var(--bs-white);
-    border-color: var(--bs-success);
-  }
-  
-  .pagination .page-link:hover {
-    color: var(--bs-white) !important;
-    background-color: var(--bs-success);
-    border-color: var(--bs-success);
-  }
+.pagination .page-item {
+  margin-left: 1px;
+  margin-right: 1px;
+  cursor: pointer;
+  /* width: ; */
+  text-align: center;
+  z-index: 0;
+  /* border: 2px solid red !important; */
+}
 
-  /* .pagination .page-link.active {
+.pagination .active .page-link {
+  color: var(--bs-white) !important;
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.pagination .page-link {
+  color: var(--bs-success) !important;
+  background-color: var(--bs-white);
+  /* border-color: var(--bs-success); */
+  border-radius: 3px;
+}
+
+.pagination .page-link:hover {
+  color: var(--bs-white) !important;
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+/* .pagination .page-link.active {
     color: var(--bs-white) !important;
     background-color: var(--bs-success);
     border-color: var(--bs-success);
   }
    */
-  .pagination .page-link:hover:focus {
-    /* box-shadow: 0px 0px 5px 2px rgba(25, 172, 81, 0.75) !important; */
-    box-shadow: 0px 0px 5px 2px rgba(25, 172, 81, 0.75) !important;
-}
-  
+.pagination .page-link:hover:focus {
+  /* box-shadow: 0px 0px 1px 1px rgba(25, 172, 81, 0.75) !important; */
 
-  .pagination .page-link.active:focus{
+  box-shadow: 0px 0px 2px 2px rgba(25, 172, 81, 0.75) !important;
+}
+
+/* .pagination .page-link.active:focus{
     box-shadow: none !important;
     outline-color: red;
-  }
-
-  
-
-
-
+  } */

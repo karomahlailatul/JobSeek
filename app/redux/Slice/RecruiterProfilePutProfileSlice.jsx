@@ -2,14 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
 
-import PrivateAxios from "../../axios/PrivateAxios";
-import Cookies from "js-cookie";
 
-export const putRecruiterProfilePutProfileSlice = createAsyncThunk("RecruiterProfilePutProfileSlice/putRecruiterProfilePutProfileSlice", async (formData) => {
-  let api = PrivateAxios();
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-  const token = Cookies.get("token");
-  const id = Cookies.get("id");
+export const putRecruiterProfilePutProfileSlice = createAsyncThunk("RecruiterProfilePutProfileSlice/putRecruiterProfilePutProfileSlice", async ({ token, refreshToken, id, formData  }) => {
+
+  let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
       .put(process.env.REACT_APP_API_BACKEND + "recruiter/" + id, formData, {
@@ -21,11 +19,11 @@ export const putRecruiterProfilePutProfileSlice = createAsyncThunk("RecruiterPro
       })
       .then((res) => {
         toast.success(res.data.message, { toastId: "successUpdateRecruiter" });
-        return res.data
+        return res.data;
       })
       .catch((err) => {
         toast.warning(err.response.data.message, { toastId: "warningUpdateRecruiter" });
-        return err.response.data
+        return err.response.data;
       });
     return response;
   }

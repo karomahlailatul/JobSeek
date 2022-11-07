@@ -1,13 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import PrivateAxios from "../../axios/PrivateAxios";
-import Cookies from "js-cookie";
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-export const getRecruiterProfile = createAsyncThunk("RecruiterProfile/getRecruiterProfile", async () => {
-  let api = PrivateAxios();
+export const getRecruiterProfile = createAsyncThunk("RecruiterProfile/getRecruiterProfile", async ({ token, refreshToken, id }) => {
+
+  let api = PrivateAxiosSSR({ token, refreshToken });
   try {
-    const token = Cookies.get("token");
-    const id = Cookies.get("id");
-
     if (token) {
       const response = await api.get(process.env.REACT_APP_API_BACKEND + "recruiter/" + id, {
         headers: {
@@ -15,13 +12,10 @@ export const getRecruiterProfile = createAsyncThunk("RecruiterProfile/getRecruit
           "Access-Control-Allow-Origin": "*",
         },
       });
-      // console.log( response.data)
       return response.data;
     }
   } catch (error) {
-    
     return error.response.data;
-    // console.log(error.response.data.message);
   }
 });
 

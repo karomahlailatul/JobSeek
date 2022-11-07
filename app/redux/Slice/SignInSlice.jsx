@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import Cookies from "js-cookie";
 
 export const postSignIn = createAsyncThunk("SignIn/postSignIn", async ({ data, lockCredential }) => {

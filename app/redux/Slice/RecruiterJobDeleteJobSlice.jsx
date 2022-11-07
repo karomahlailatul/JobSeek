@@ -1,14 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-import Cookies from "js-cookie";
-import PrivateAxios from "../../axios/PrivateAxios";
 
-export const deleteRecruiterJobDeleteJob = createAsyncThunk("RecruiterJobDeleteJob/deleteRecruiterJobDeleteJob", async (dataDeleteCheckList) => {
-  // console.log(dataDeleteCheckList);
-  let api = PrivateAxios();
-  const token = Cookies.get("token");
+export const deleteRecruiterJobDeleteJob = createAsyncThunk("RecruiterJobDeleteJob/deleteRecruiterJobDeleteJob", async ({token, refreshToken ,dataDeleteCheckList}) => {
+  let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
       .delete(process.env.REACT_APP_API_BACKEND + "job/selected/" + dataDeleteCheckList, {

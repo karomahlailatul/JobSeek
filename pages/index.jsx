@@ -1,5 +1,5 @@
 // import Head from "next/head";
-import {  Fragment } from "react";
+import { useEffect, Fragment } from "react";
 // import Navbar from "../../components/navbar/index";
 import HomeSwiper from "../components/homeSwiper";
 import Image from "next/image";
@@ -7,6 +7,9 @@ import Image from "next/image";
 //import { SwiperSlide } from "swiper";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Welcome | JobSeek";
+  }, []);
   return (
     <Fragment>
       {/* <Navbar /> */}

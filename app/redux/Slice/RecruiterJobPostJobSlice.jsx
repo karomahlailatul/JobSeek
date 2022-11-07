@@ -1,17 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
-import PrivateAxios from "../../axios/PrivateAxios";
 
-export const postRecruiterJobPostJob = createAsyncThunk("RecruiterJobPostJob/postRecruiterJobPostJob", async (formData) => {
-  let api = PrivateAxios();
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-  const token = Cookies.get("token");
-
+export const postRecruiterJobPostJob = createAsyncThunk("RecruiterJobPostJob/postRecruiterJobPostJob", async ({ token, refreshToken, data }) => {
+  let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
-      .post(process.env.REACT_APP_API_BACKEND + "job/withskilljob", JSON.stringify(formData), {
+      .post(process.env.REACT_APP_API_BACKEND + "job/withskilljob", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

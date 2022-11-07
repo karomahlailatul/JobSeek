@@ -1,0 +1,178 @@
+.container-profile-recruiter .nav-pills .nav-link.active,
+.container-profile-recruiter .nav-pills .show > .nav-link {
+  color: var(--bs-success) !important;
+  background-color: transparent;
+}
+
+.container-profile-recruiter .nav-pills .nav-link :hover,
+.container-profile-recruiter .nav-pills .nav-link :focus ,
+.container-profile-recruiter .nav-pills .nav-link.active :hover,
+.container-profile-recruiter .nav-pills .nav-link.active :focus {
+  color: var(--bs-success)!important;
+  /* background-color: transparent; */
+}
+
+
+.container-profile-recruiter .btn-tab-link:hover,
+.container-profile-recruiter .btn-tab-link:focus {
+  color: var(--bs-success)!important;
+  /* background-color: transparent; */
+}
+
+.container-profile-recruiter .nav-pills .nav-link {
+  /* color: rgb(165, 165, 165); */
+  color: rgba(0, 0, 0, 0.5);
+  font-weight:500;
+}
+
+.container-profile-recruiter .nav-outline {
+  border: 1px solid gray;
+}
+
+.container-profile-recruiter .btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: transparent;
+  border: 0;
+}
+
+.container-profile-recruiter .btn-toggle:hover,
+.container-profile-recruiter .btn-toggle:focus {
+  color: rgba(0, 0, 0, 0.85);
+  background-color: transparent;
+}
+
+.container-profile-recruiter .btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform 0.35s ease;
+  transform-origin: 0.5em 50%;
+  transform: rotate(90deg);
+}
+
+.container-profile-recruiter .btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.container-profile-recruiter .btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(270deg);
+}
+
+.container-profile-recruiter .btn-toggle-nav a {
+  display: inline-flex;
+  padding: 0.1875rem 0.5rem;
+  margin-top: 0.125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+  color: gray;
+}
+
+.container-profile-recruiter .btn-toggle-nav a:hover,
+.container-profile-recruiter .btn-toggle-nav a:focus {
+  color: black;
+  background-color: transparent;
+}
+
+.container-profile-recruiter a[aria-expanded="false"] .label-sidebar {
+  color: grey;
+}
+
+.container-profile-recruiter a[aria-expanded="true"] .label-sidebar:focus,
+.container-profile-recruiter a[aria-expanded="true"] .label-sidebar:hover {
+  color: black;
+}
+
+.container-profile-recruiter table th {
+  color: grey !important;
+}
+
+.container-profile-recruiter .btn-search {
+  background-color: white;
+  color: gray;
+  font-size: 14px;
+  border: 0;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 50px;
+  margin: auto;
+  /* margin-right: 20px; */
+}
+
+.container-profile-recruiter .container-nav-pills .nav-pills .nav-link.active,
+.container-profile-recruiter .container-nav-pills .nav-pills .show > .container-nav-pills .nav-link {
+  color: #db3022;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 5px solid #db3022;
+  border-radius: 0%;
+}
+
+.container-profile-recruiter .container-nav-pills .nav-pills .nav-link {
+  color: gray;
+}
+
+.container-profile-recruiter .container-nav-pills .nav-outline {
+  border: 1px solid gray;
+}
+
+/* .container-profile-recruiter  .btn:hover,
+.container-profile-recruiter  .btn:hover::after,
+.container-profile-recruiter  .btn:focus,
+.container-profile-recruiter  .btn:active
+ {
+    border :none;
+} */
+
+.container-profile-recruiter .nav-link {
+  cursor: pointer;
+}
+
+.container-profile-recruiter .ico-profile {
+  background-color: #456bf3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.container-profile-recruiter .ico-profile img {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+.container-profile-recruiter .ico-product {
+  background-color: #f36f45;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.container-profile-recruiter .ico-product img {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+.container-profile-recruiter .ico-order {
+  background-color: #f3456f;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.container-profile-recruiter .ico-order img {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+.container-profile-recruiter .logo-profile-middle img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}

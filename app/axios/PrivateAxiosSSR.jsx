@@ -1,50 +1,44 @@
-import axios from 'axios'
+import axios from "axios";
 import jwt_decode from "jwt-decode";
-import dayjs from 'dayjs'
-
+import dayjs from "dayjs";
 import Cookies from "js-cookie";
 
-const baseURL = process.env.REACT_APP_API_BACKEND
+const baseURL = process.env.REACT_APP_API_BACKEND;
 
+const PrivateAxiosSSR = ({ token, refreshToken }) => {
+  const axiosInstance = axios.create({
+    baseURL,
+    headers: { Authorization: `Bearer ${token}`, "Access-Control-Allow-Origin": "*" },
+  });
 
-const PrivateAxiosSSR = ({token,refreshToken}) => {
+  let refreshRequest = false;
 
-    const axiosInstance = axios.create({
-        baseURL,
-        headers: { Authorization: `Bearer ${token}` }
-    });
+  axiosInstance.interceptors.request.use(async (req) => {
+    if (token && !refreshRequest) {
+      const user = jwt_decode(token);
+      const isTokenExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
-    let refreshRequest = false;
+      if (isTokenExpired) {
+        refreshRequest = true;
+        const response = await axios.post(
+          process.env.REACT_APP_API_BACKEND + "users/refresh-token",
+          { refreshToken: refreshToken },
+          {
+            headers: { "Content-Type": "application/json" },
+          },
+          { withCredentials: true }
+        );
 
-    axiosInstance.interceptors.request.use(async req => {
+        Cookies.set("token", response.data.data.token);
+        Cookies.set("refreshToken", response.data.data.refreshToken);
+        req.headers.Authorization = `Bearer ${response.data.data.token}`;
+      }
+    }
 
-        if (token && !refreshRequest) {
+    return req;
+  });
 
-            const user = jwt_decode(token);
-            const isTokenExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
-
-            if (isTokenExpired) {
-                refreshRequest = true
-                const response = await axios.post(
-                    process.env.REACT_APP_API_BACKEND + "users/refresh-token",
-                    { refreshToken: refreshToken }
-                    ,
-                    {
-                        headers: { "Content-Type": "application/json" },
-                    },
-                    { withCredentials: true }
-                );
-                
-                Cookies.set("token", response.data.data.token);
-                Cookies.set("refreshToken", response.data.data.refreshToken);
-                req.headers.Authorization = `Bearer ${response.data.data.token}`
-            }
-        }
-
-        return req
-    })
-
-    return axiosInstance
-}
+  return axiosInstance;
+};
 
 export default PrivateAxiosSSR;

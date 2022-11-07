@@ -1,15 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import PrivateAxios from "../../axios/PrivateAxios";
-import Cookies from "js-cookie";
+import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
-export const putUsersProfilePutProfile = createAsyncThunk("UsersProfilePutProfile/putUsersProfilePutProfile", async (formData) => {
-  let api = PrivateAxios();
-
-  const token = Cookies.get("token");
+export const putUsersProfilePutProfile = createAsyncThunk("UsersProfilePutProfile/putUsersProfilePutProfile", async ({ token, refreshToken, formData }) => {
+  let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
       .put(process.env.REACT_APP_API_BACKEND + "users/profile?update", formData, {
@@ -21,11 +17,11 @@ export const putUsersProfilePutProfile = createAsyncThunk("UsersProfilePutProfil
       })
       .then((res) => {
         toast.success(res.data.message, { toastId: "successUpdateUsers" });
-        return res.data
+        return res.data;
       })
       .catch((err) => {
         toast.warning(err.response.data.message, { toastId: "warningUpdateUsers" });
-        return err.response.data
+        return err.response.data;
       });
     return response;
   }

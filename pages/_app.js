@@ -1,14 +1,16 @@
-
 // style componet module
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
 
 // style component
 import "../components/PreLoader/style.css";
 import "../components/NavBar/style.css";
 import "../components/homeSwiper/style.css";
 import "../components/PaginationTable/style.css";
+import "../components/Pagination/style.css";
 
 import "../components/RecruiterTabProfileRecruiterProfile/style.css";
 import "../components/RecruiterTabJobMyJob/style.css";
@@ -27,11 +29,13 @@ import "../components/UsersTabWorkExperienceCreateWorkExperience/style.css";
 import "../components/UsersTabWorkExperienceEditWorkExperience/style.css";
 import "../components/UsersTabWorkExperienceMyWorkExperience/style.css";
 
+
 // style pages
-import "./recruiter/profile/style.css";
-import "./users/profile/style.css";
+import "./r/profile/style.css";
+import "./u/profile/style.css";
 import "./sign-up/style.css";
 import "./sign-in/style.css";
+import "./j/style.css";
 
 import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
@@ -44,6 +48,18 @@ import { wrapper } from "../app/redux/store";
 import { Provider } from "react-redux";
 
 import SSRProvider from "react-bootstrap/SSRProvider";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import { fas } from "@fortawesome/free-solid-svg-icons";
+// import { fab } from "@fortawesome/free-brands-svg-icons";
+// import { far } from "@fortawesome/free-regular-svg-icons";
+// library.add(fas, fab, far);
+
+// handle guardDevice
+import GuardDeviceNotSupport from "../components/GuardDeviceNotSupport";
 
 const MyApp = ({ Component, 
   id, role, token, refreshToken, lockCredential,
@@ -58,18 +74,22 @@ const MyApp = ({ Component,
 
   return (
     <Fragment>
-      <SSRProvider>
-        <Fragment>
-          <Provider store={store}>
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar id={id} role={role} token={token} refreshToken={refreshToken} lockCredential={lockCredential} />}
+      <GuardDeviceNotSupport>
+        <SSRProvider>
+          <Fragment>
+            <Provider store={store}>
+              {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <NavigationBar 
+              id={id} role={role} token={token} refreshToken={refreshToken} lockCredential={lockCredential} 
+              />}
 
-            <Component {...props.pageProps} />
+              <Component {...props.pageProps} />
 
-            {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />}
-          </Provider>
-        </Fragment>
-        <ToastContainer position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover />
-      </SSRProvider>
+              {router.pathname === "/sign-in" || router.pathname === "/sign-up" || router.pathname === "/verification" ? null : <Footer />}
+            </Provider>
+          </Fragment>
+          <ToastContainer position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover />
+        </SSRProvider>
+      </GuardDeviceNotSupport>
     </Fragment>
   );
 };
@@ -77,11 +97,12 @@ const MyApp = ({ Component,
 export default MyApp;
 
 MyApp.getInitialProps = async ({ ctx }) => {
-  const token = ctx.req?.cookies?.token || null;
-  const refreshToken = ctx.req?.cookies?.refreshToken || null;
-  const role = ctx.req?.cookies?.role || null;
-  const id = ctx.req?.cookies?.id || null;
-  const lockCredential = ctx.req?.cookies?.lockCredential || null;
+ 
+  const token = ctx.req?.cookies?.token ;
+  const refreshToken = ctx.req?.cookies?.refreshToken 
+  const role = ctx.req?.cookies?.role 
+  const id = ctx.req?.cookies?.id 
+  const lockCredential = ctx.req?.cookies?.lockCredential
 
   return {
     token: token,
