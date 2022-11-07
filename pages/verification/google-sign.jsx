@@ -51,13 +51,16 @@ const SignGoogle = ({ token, id, role, refreshToken, lockCredential }) => {
       Cookies.set("id", id);
       Cookies.set("role", role);
       Cookies.set("lockCredential", lockCredential);
+      window.close();
+    } else {
+      window.close();
     }
-    return () => {
-      setTimeout(() => {
-        window.close();
-      }, 50);
-    };
-  }, [token, refreshToken, id, role,lockCredential]);
+    // return () => {
+    //   setTimeout(() => {
+    //     window.close();
+    //   }, 50);
+    // };
+  }, [token, refreshToken, id, role, lockCredential]);
 
   const isLoading = true;
   return (
