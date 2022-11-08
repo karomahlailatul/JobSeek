@@ -173,7 +173,7 @@ const JobDetails = ({
     skill_name,
   } = JobDetails;
 
-  console.log(JobApplyByJob);
+  // console.log(JobApplyByJob);
   const size = useWindowSize();
 
   const dispatch = useDispatch();

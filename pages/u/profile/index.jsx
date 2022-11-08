@@ -71,7 +71,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
 });
 
 const UsersProfile = ({ id, token, refreshToken, role, JobApplyByUsers }) => {
-  console.log(JobApplyByUsers)
+  // console.log(JobApplyByUsers)
   const size = useWindowSize();
   const [statusEdit, setStatusEdit] = useState(false);
   const { UsersProfile, isLoading } = useSelector((state) => state.UsersProfile);
@@ -405,7 +405,7 @@ const UsersProfile = ({ id, token, refreshToken, role, JobApplyByUsers }) => {
                     <UsersTabSkillMySkill />{" "}
                   </div>
                   <div style={{ display: tab6 ? "block" : "none" }}>
-                    <UsersTabJobApplyMyJobApply />{" "}
+                    <UsersTabJobApplyMyJobApply token={token} refreshToken={refreshToken} role={role} id={id} JobApplyByUsers={JobApplyByUsers}/>{" "}
                   </div>
                   {/* {tab0 ? : null}
                   {tab1 ? : null}

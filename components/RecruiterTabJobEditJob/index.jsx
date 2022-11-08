@@ -64,7 +64,7 @@ const RecruiterTabJobEditJob = ({
     });
   };
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Fragment>
