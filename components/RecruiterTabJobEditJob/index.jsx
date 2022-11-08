@@ -14,10 +14,13 @@ const RecruiterTabJobEditJob = ({
   id,
   Skill,
   idJob,
-  // setIdJob,
+  setIdJob,
+  showMyJob,
   setShowMyJob,
 }) => {
   const dispatch = useDispatch();
+
+  // console.log(idJob)
 
   const { JobSearch } = useSelector((state) => state.JobSearch);
 
@@ -27,6 +30,7 @@ const RecruiterTabJobEditJob = ({
   const [listSkillId, setListSkillId] = useState([]);
 
   useEffect(() => {
+    if (idJob != "" || idJob) {
     JobSearch.map(async (item) => {
       if (item.id == idJob) {
         const dataSkill = [];
@@ -44,8 +48,8 @@ const RecruiterTabJobEditJob = ({
         setListSkillId(dataSkill);
         window.scrollTo(0, 0);
       }
-    });
-  }, [idJob]);
+    })}
+  }, [idJob,showMyJob]);
 
   const handleChange = (e) => {
     setData({
@@ -81,7 +85,7 @@ const RecruiterTabJobEditJob = ({
           <PreLoaderComponent isLoading={isLoading} />
         </div>
       ) : (
-        <div className="container-fluid">
+
           <div className="col-12 justify-content-start">
             <div className="col-12 d-flex justify-content-between">
               <h4 className="modal-title fw-bold " id="modalProfileLabel">
@@ -90,7 +94,9 @@ const RecruiterTabJobEditJob = ({
               <button
                 className="btn btn-success px-4"
                 onClick={() => {
+                  setIdJob("");
                   setShowMyJob(true);
+                  setData({})
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
@@ -297,7 +303,6 @@ const RecruiterTabJobEditJob = ({
               </form>
             </div>
           </div>
-        </div>
       )}
     </Fragment>
   );
