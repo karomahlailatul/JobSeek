@@ -1,24 +1,25 @@
 import { useState, Fragment } from "react";
 import Image from "next/image";
 
-import { 
+import {
   // useDispatch,
-   useSelector } from "react-redux";
+  useSelector,
+} from "react-redux";
 
 // import { useRouter } from "next/router";
 
 import UsersTabProfileMyProfile from "../../../components/UsersTabProfileMyProfile";
 
 import UsersTabPortfolioCreatePortfolio from "../../../components/UsersTabPortfolioCreatePortfolio";
-import UsersTabPortfolioEditPortfolio from "../../../components/UsersTabPortfolioEditPortfolio";
+// import UsersTabPortfolioEditPortfolio from "../../../components/UsersTabPortfolioEditPortfolio";
 import UsersTabPortfolioMyPortfolio from "../../../components/UsersTabPortfolioMyPortfolio";
 
-import UsersTabSkillCreateSkill from "../../../components/UsersTabSkillCreateSkill";
-import UsersTabSkillEditSkill from "../../../components/UsersTabSkillEditSkill";
+// import UsersTabSkillCreateSkill from "../../../components/UsersTabSkillCreateSkill";
+// import UsersTabSkillEditSkill from "../../../components/UsersTabSkillEditSkill";
 import UsersTabSkillMySkill from "../../../components/UsersTabSkillMySkill";
 
 import UsersTabWorkExperienceCreateWorkExperience from "../../../components/UsersTabWorkExperienceCreateWorkExperience";
-import UsersTabWorkExperienceEditWorkExperience from "../../../components/UsersTabWorkExperienceEditWorkExperience";
+// import UsersTabWorkExperienceEditWorkExperience from "../../../components/UsersTabWorkExperienceEditWorkExperience";
 import UsersTabWorkExperienceMyWorkExperience from "../../../components/UsersTabWorkExperienceMyWorkExperience";
 
 import UsersTabJobApplyMyJobApply from "../../../components/UsersTabJobApplyMyJobApply";
@@ -34,6 +35,7 @@ import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import { faUserGear } from "@fortawesome/free-solid-svg-icons";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import useWindowSize from "../../../components/WindowsSize";
+import { getJobApplyByUsers } from "../../../app/redux/Slice/JobApplyGetByUsersSlice";
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
   const id = ctx?.req?.cookies?.id || null;
@@ -43,7 +45,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
   const lockCredential = ctx?.req?.cookies?.lockCredential || null;
 
   if (id && token && refreshToken && role && lockCredential) {
-    await store.dispatch(getUsersProfile(token, refreshToken ));
+    await store.dispatch(getUsersProfile(token, refreshToken));
+    await store.dispatch(getJobApplyByUsers(id));
   } else {
     return {
       redirect: {
@@ -53,6 +56,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     };
   }
 
+  const JobApplyByUsers = await store.getState().JobApplyGetByUsers.JobApplyGetByUsers || []
+
   return {
     props: {
       token: token,
@@ -60,14 +65,25 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
       role: role,
       id: id,
       lockCredential: lockCredential,
+      JobApplyByUsers: JobApplyByUsers,
     },
   };
 });
 
-const UsersProfile = ({ id, token, refreshToken, role }) => {
+const UsersProfile = ({ id, token, refreshToken, role, JobApplyByUsers }) => {
+  console.log(JobApplyByUsers)
   const size = useWindowSize();
   const [statusEdit, setStatusEdit] = useState(false);
   const { UsersProfile, isLoading } = useSelector((state) => state.UsersProfile);
+
+  const [tab0, setTab0] = useState(true);
+  const [tab1, setTab1] = useState(false);
+  const [tab2, setTab2] = useState(false);
+  const [tab3, setTab3] = useState(false);
+  const [tab4, setTab4] = useState(false);
+  const [tab5, setTab5] = useState(false);
+  const [tab6, setTab6] = useState(false);
+  // const [tab7, setTab7] = useState(false);
 
   return (
     <Fragment>
@@ -125,7 +141,25 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                         <div className="collapse show" id="recruiter-collapse">
                           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li>
-                              <button href="#" className="nav-link rounded ms-5 active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+                              <button
+                                // href="#"
+                                className="nav-link rounded ms-5 active"
+                                id="v-pills-profile-tab"
+                                // data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-profile"
+                                aria-selected="true"
+                                onClick={() => {
+                                  setTab0(true);
+                                  setTab1(false);
+                                  setTab2(false);
+                                  setTab3(false);
+                                  setTab4(false);
+                                  setTab5(false);
+                                  setTab6(false);
+                                }}
+                              >
                                 My Profile
                               </button>
                             </li>
@@ -147,28 +181,46 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5"
                                 id="v-pills-my-portfolio-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-my-portfolio"
+                                // data-bs-toggle="pill"
+                                // data-bs-target="#v-pills-my-portfolio"
                                 type="button"
                                 role="tab"
                                 aria-controls="v-pills-my-portfolio"
                                 aria-selected="true"
+                                onClick={() => {
+                                  setTab0(false);
+                                  setTab1(true);
+                                  setTab2(false);
+                                  setTab3(false);
+                                  setTab4(false);
+                                  setTab5(false);
+                                  setTab6(false);
+                                }}
                               >
                                 My Portfolio
                               </button>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5"
                                 id="v-pills-create-portfolio-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-create-portfolio"
+                                // data-bs-toggle="pill"
+                                // data-bs-target="#v-pills-create-portfolio"
                                 type="button"
                                 role="tab"
                                 aria-controls="v-pills-create-portfolio"
                                 aria-selected="true"
+                                onClick={() => {
+                                  setTab0(false);
+                                  setTab1(false);
+                                  setTab2(true);
+                                  setTab3(false);
+                                  setTab4(false);
+                                  setTab5(false);
+                                  setTab6(false);
+                                }}
                               >
                                 Add a Portfolio
                               </button>
@@ -192,28 +244,46 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small ">
                             <li>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5 d-flex justify-content-start "
                                 id="v-pills-my-work-experience-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-my-work-experience"
+                                // data-bs-toggle="pill"
+                                // data-bs-target="#v-pills-my-work-experience"
                                 type="button"
                                 role="tab"
                                 aria-controls="v-pills-my-work-experience"
                                 aria-selected="true"
+                                onClick={() => {
+                                  setTab0(false);
+                                  setTab1(false);
+                                  setTab2(false);
+                                  setTab3(true);
+                                  setTab4(false);
+                                  setTab5(false);
+                                  setTab6(false);
+                                }}
                               >
                                 My Work Experience
                               </button>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5 ps-3 pe-0"
                                 id="v-pills-create-work-experience-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-create-work-experience"
+                                // data-bs-toggle="pill"
+                                // data-bs-target="#v-pills-create-work-experience"
                                 type="button"
                                 role="tab"
                                 aria-controls="#v-pills-create-work-experience"
                                 aria-selected="true"
+                                onClick={() => {
+                                  setTab0(false);
+                                  setTab1(false);
+                                  setTab2(false);
+                                  setTab3(false);
+                                  setTab4(true);
+                                  setTab5(false);
+                                  setTab6(false);
+                                }}
                               >
                                 Add Work Experience
                               </button>
@@ -235,21 +305,26 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                         <div className="collapse" id="skill-collapse">
                           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li>
-                              <button href="#" className="nav-link rounded ms-5" id="v-pills-my-skill-tab" data-bs-toggle="pill" data-bs-target="#v-pills-my-skill" type="button" role="tab" aria-controls="v-pills-my-skill" aria-selected="true">
-                                My Skill
-                              </button>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5"
-                                id="v-pills-create-skill-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-create-skill"
+                                id="v-pills-my-skill-tab"
+                                // data-bs-toggle="pill" data-bs-target="#v-pills-my-skill"
                                 type="button"
                                 role="tab"
-                                aria-controls="#v-pills-create-skill"
+                                aria-controls="v-pills-my-skill"
                                 aria-selected="true"
+                                onClick={() => {
+                                  setTab0(false);
+                                  setTab1(false);
+                                  setTab2(false);
+                                  setTab3(false);
+                                  setTab4(false);
+                                  setTab5(true);
+                                  setTab6(false);
+                                }}
                               >
-                                Add a Skill
+                                My Skill
                               </button>
                             </li>
                           </ul>
@@ -270,52 +345,29 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li>
                               <button
-                                href="#"
+                                // href="#"
                                 className="nav-link rounded ms-5"
                                 id="v-pills-my-job-apply-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-my-job-apply"
+                                // data-bs-toggle="pill"
+                                // data-bs-target="#v-pills-my-job-apply"
                                 type="button"
                                 role="tab"
                                 aria-controls="v-pills-my-job-apply"
                                 aria-selected="true"
+                                // onClick={() => {
+                                //   document.getElementById("v-pills-all-job-apply-tab").click();
+                                // }}
                                 onClick={() => {
-                                  document.getElementById("v-pills-all-job-apply-tab").click();
+                                  setTab0(false);
+                                  setTab1(false);
+                                  setTab2(false);
+                                  setTab3(false);
+                                  setTab4(false);
+                                  setTab5(false);
+                                  setTab6(true);
                                 }}
                               >
                                 My Job Apply
-                              </button>
-                              <button
-                                href="#"
-                                className="nav-link rounded ms-5"
-                                id="#v-pills-approved-job-apply-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-my-job-apply"
-                                type="button"
-                                role="tab"
-                                aria-controls="#v-pills-my-job-apply"
-                                aria-selected="true"
-                                onClick={() => {
-                                  document.getElementById("v-pills-approved-job-apply-tab").click();
-                                }}
-                              >
-                                Approved Job
-                              </button>
-                              <button
-                                href="#"
-                                className="nav-link rounded ms-5"
-                                id="#v-pills-rejected-job-apply-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-my-job-apply"
-                                type="button"
-                                role="tab"
-                                aria-controls="#v-pills-my-job-apply"
-                                aria-selected="true"
-                                onClick={() => {
-                                  document.getElementById("v-pills-rejected-job-apply-tab").click();
-                                }}
-                              >
-                                Rejected Job
                               </button>
                             </li>
                           </ul>
@@ -334,21 +386,34 @@ const UsersProfile = ({ id, token, refreshToken, role }) => {
                 {/* <div className="container-xl container-lg container-md-fluid container-sm-fluid ">
               <div className="col-12 w-auto bg-white mx-3 my-5 py-3 px-3"> */}
                 <div className="tab-content" id="v-pills-tabContent" style={{ minHeight: `${size.height - 509}px` }}>
-                  <UsersTabProfileMyProfile UsersProfile={UsersProfile} statusEdit={statusEdit} setStatusEdit={setStatusEdit} token={token} refreshToken={refreshToken} role={role} id={id} isLoading={isLoading} />
-
-                  <UsersTabPortfolioCreatePortfolio />
-                  <UsersTabPortfolioEditPortfolio />
-                  <UsersTabPortfolioMyPortfolio />
-
-                  <UsersTabSkillCreateSkill />
-                  <UsersTabSkillEditSkill />
-                  <UsersTabSkillMySkill />
-
-                  <UsersTabWorkExperienceCreateWorkExperience />
-                  <UsersTabWorkExperienceEditWorkExperience />
-                  <UsersTabWorkExperienceMyWorkExperience />
-
-                  <UsersTabJobApplyMyJobApply />
+                  <div style={{ display: tab0 ? "block" : "none" }}>
+                    <UsersTabProfileMyProfile UsersProfile={UsersProfile} statusEdit={statusEdit} setStatusEdit={setStatusEdit} token={token} refreshToken={refreshToken} role={role} id={id} isLoading={isLoading} />
+                  </div>
+                  <div style={{ display: tab1 ? "block" : "none" }}>
+                    <UsersTabPortfolioMyPortfolio />{" "}
+                  </div>
+                  <div style={{ display: tab2 ? "block" : "none" }}>
+                    <UsersTabPortfolioCreatePortfolio />
+                  </div>
+                  <div style={{ display: tab3 ? "block" : "none" }}>
+                    <UsersTabWorkExperienceMyWorkExperience />{" "}
+                  </div>
+                  <div style={{ display: tab4 ? "block" : "none" }}>
+                    <UsersTabWorkExperienceCreateWorkExperience />{" "}
+                  </div>
+                  <div style={{ display: tab5 ? "block" : "none" }}>
+                    <UsersTabSkillMySkill />{" "}
+                  </div>
+                  <div style={{ display: tab6 ? "block" : "none" }}>
+                    <UsersTabJobApplyMyJobApply />{" "}
+                  </div>
+                  {/* {tab0 ? : null}
+                  {tab1 ? : null}
+                  {tab2 ?  : null}
+                  {tab3 ? : null}
+                  {tab4 ? : null}
+                  {tab5 ? : null}
+                  {tab6 ? : null} */}
                 </div>
               </div>
             </div>

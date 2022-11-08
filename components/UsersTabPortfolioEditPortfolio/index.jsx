@@ -1,10 +1,11 @@
 import { Fragment } from "react";
+import Costum503 from "../Costum503";
 
 const UsersTabPortfolioEditPortfolio = () => {
   return (
     <Fragment>
       <div className="container-fluid">
-        <div>Under Development</div>
+      <Costum503/>
       </div>
     </Fragment>
   );

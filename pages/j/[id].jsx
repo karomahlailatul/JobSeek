@@ -1,6 +1,8 @@
-import { Fragment, 
-  // useEffect
- } from "react";
+import {
+  Fragment,
+  // useEffect,
+  useState,
+} from "react";
 import Card from "react-bootstrap/Card";
 import Link from "next/link";
 import { getJobDetails } from "../../app/redux/Slice/JobDetailsSlice";
@@ -27,13 +29,21 @@ import { faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import { faBusinessTime } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import { getJobSearch } from "../../app/redux/Slice/JobSearchSlice";
+import { useRouter } from "next/router";
 
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { postJobApplyPost } from "../../app/redux/Slice/JobApplyPostSlice";
+import { getJobApplyByJob } from "../../app/redux/Slice/JobApplyGetByJobSlice";
+import { useEffect } from "react";
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
   const jobId = ctx?.query?.id || null;
   await store.dispatch(getJobDetails(jobId));
+  await store.dispatch(getJobApplyByJob(jobId));
   // console.log(store.getState().JobDetails.JobDetails);
-  const JobDetails = await store.getState().JobDetails.JobDetails;
-  const isLoading = await store.getState().JobDetails.isLoading;
+  const JobDetails = await store.getState().JobDetails.JobDetails || []
+  const isLoading = await store.getState().JobDetails.isLoading || []
+  const JobApplyByJob = await store.getState().JobApplyGetByJob.JobApplyByJob || []
 
   const id = ctx?.req?.cookies?.id || null;
   const token = ctx?.req?.cookies?.token || null;
@@ -109,17 +119,23 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
       refreshToken: refreshToken,
       role: role,
       userId: id,
+      JobApplyByJob: JobApplyByJob,
     },
   };
 });
 
-const JobDetails = ({ JobDetails, 
+const JobDetails = ({
+  JobDetails,
   // isLoading,
-   JobSearchFamiliar, userId,
-    // token, refreshToken, role
-   }) => {
+  JobSearchFamiliar,
+  userId,
+  token,
+  refreshToken,
+  role,
+  JobApplyByJob,
+}) => {
   const {
-    // id,
+    id,
     name,
     position,
     system,
@@ -157,9 +173,11 @@ const JobDetails = ({ JobDetails,
     skill_name,
   } = JobDetails;
 
+  console.log(JobApplyByJob);
   const size = useWindowSize();
 
-  // console.log(size);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const dayConvert = (duration) => {
     var d = moment.duration(duration, "milliseconds");
@@ -176,6 +194,35 @@ const JobDetails = ({ JobDetails,
       return `${mins} minutes ago`;
     }
   };
+
+  const [
+    data,
+    // setData
+  ] = useState({
+    job_id: id,
+    users_id: userId,
+    status: "prepared",
+    message: "waiting approve recruiter",
+  });
+
+  const handleSubmit = () => {
+    if ((token, refreshToken, role)) {
+      dispatch(postJobApplyPost({ token, refreshToken, data }));
+      // toast.success("before Apply Job, Please Sign in/Sign Up", { toastId: "errorNoSign" });
+    } else {
+      toast.success("before Apply Job, Please Sign in/Sign Up", { toastId: "errorNoSign" });
+      router.push("/sign-in");
+    }
+  };
+
+  const [dataIncludeApplyJob, setDataIncludeApplyJob] = useState(false);
+
+  // console.log(
+
+  useEffect(() => {
+    JobApplyByJob.map((e) => (e.users_id == userId ? setDataIncludeApplyJob(true) : null));
+  }, [JobApplyByJob]);
+
   return (
     <Fragment>
       <div className="container-xl container-lg container-md-fluid container-sm-fluid d-xl-flex  d-lg-flex  d-md-grid  d-sm-grid" style={{ minHeight: `${size.height - 381}px` }}>
@@ -225,7 +272,7 @@ const JobDetails = ({ JobDetails,
                 </div>
                 <hr className="my-0" />
 
-                <div className="d-flex my-2">
+                <div className="d-grid my-2">
                   <span className="col-4 text-secondary">
                     <FontAwesomeIcon icon={faLocationDot} className=" my-auto" />
                     <span className="my-auto ps-2">{recruiter_address ? recruiter_address : "Office does not exist"}</span>
@@ -256,13 +303,25 @@ const JobDetails = ({ JobDetails,
                   </small>
                 </div>
 
-                <hr className="my-0" />
                 <div className="d-flex col-12 my-2">
-                  <div className="d-flex ">
-                    <button className=" btn btn-success px-5" disabled={recruiter_users_id == userId}>
-                      <FontAwesomeIcon icon={faCircleDown} className=" my-auto" />
-                      <span className="my-auto ps-2">Apply Job</span>
-                    </button>
+                  <div className="d-flex">
+                    {dataIncludeApplyJob ? (
+                      <Fragment>
+                        <hr className="my-0" />
+                        <button className=" btn btn-success px-5" disabled onClick={handleSubmit}>
+                          <FontAwesomeIcon icon={faCircleDown} className=" my-auto" />
+                          <span className="my-auto ps-2">You&apos;re Already Applied this Job</span>
+                        </button>
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <hr className="my-0" />
+                        <button className=" btn btn-success px-5" disabled={recruiter_users_id == userId} onClick={handleSubmit}>
+                          <FontAwesomeIcon icon={faCircleDown} className=" my-auto" />
+                          <span className="my-auto ps-2">{recruiter_users_id == userId ? `You're Owned this Job` : `Apply Job`}</span>
+                        </button>
+                      </Fragment>
+                    )}
                   </div>
                   {/* <div className="d-flex ps-3">
                   <button className=" btn btn-outline-success" disabled={recruiter_users_id == userId }>

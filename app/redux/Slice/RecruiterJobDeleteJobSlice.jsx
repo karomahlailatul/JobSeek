@@ -4,11 +4,12 @@ import { toast } from "react-toastify";
 import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
 
-export const deleteRecruiterJobDeleteJob = createAsyncThunk("RecruiterJobDeleteJob/deleteRecruiterJobDeleteJob", async ({token, refreshToken ,dataDeleteCheckList}) => {
+export const deleteRecruiterJobDeleteJob = createAsyncThunk("RecruiterJobDeleteJob/deleteRecruiterJobDeleteJob", async ({token, refreshToken ,dataCheckBoxValueList}) => {
+  // console.log({token, refreshToken ,dataCheckBoxValueList})
   let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
-      .delete(process.env.REACT_APP_API_BACKEND + "job/selected/" + dataDeleteCheckList, {
+      .delete(process.env.REACT_APP_API_BACKEND + "job/selected/" + dataCheckBoxValueList, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Access-Control-Allow-Origin": "*",

@@ -22,6 +22,7 @@ const ModalView = ({
   dispatchGetRecruiterJobMyJob,
   setCheckBoxValueList,
 }) => {
+  // console.log(dataCheckBoxValueList);
   const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +32,7 @@ const ModalView = ({
   const handleDeleteSelectedJob = async (e) => {
     await e.preventDefault();
     setIsLoading(true);
-    dispatch(deleteRecruiterJobDeleteJob({ token, refreshToken, dataCheckBoxValueList }))
+    dispatch(deleteRecruiterJobDeleteJob({token, refreshToken, dataCheckBoxValueList}))
       .unwrap()
       .then(() => {
         dispatchGetRecruiterJobMyJob();

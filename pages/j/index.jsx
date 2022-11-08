@@ -29,10 +29,10 @@ const SearchRecipes = () => {
   const dispatch = useDispatch();
   const size = useWindowSize();
   const [keywordParamSearch, setKeywordParamSearch] = useState(router.query.keyword);
-  const [sortbyParamSearch, setSortbyParamSearch] = useState(router.query.sortby);
-  const [sortParamSearch, setSortParamSearch] = useState(router.query.sort);
-  const [pageParamSearch, setPageParamSearch] = useState(router.query.page);
-  const [limitParamSearch, setLimitParamSearch] = useState(router.query.limit);
+  const [sortbyParamSearch, setSortbyParamSearch] = useState(router.query.sortby || "updated_on");
+  const [sortParamSearch, setSortParamSearch] = useState(router.query.sort || "desc");
+  const [pageParamSearch, setPageParamSearch] = useState(router.query.page || "1");
+  const [limitParamSearch, setLimitParamSearch] = useState(router.query.limit || "12");
   useEffect(() => {
     setKeywordParamSearch(router.query.keyword);
     setSortbyParamSearch(router.query.sortby || "updated_on");

@@ -18,6 +18,10 @@ import RecruiterJobPostJobReducer from "./Slice/RecruiterJobPostJobSlice";
 import SkillReducer from "./Slice/SkillSlice";
 import JobSearchReducer from "./Slice/JobSearchSlice";
 import JobDetailsReducer from "./Slice/JobDetailsSlice";
+import JobApplyPostReducer from "./Slice/JobApplyPostSlice";
+import JobApplyGetByJobReducer from "./Slice/JobApplyGetByJobSlice";
+import JobApplyGetByRecruiterReducer from "./Slice/JobApplyGetByRecruiterSlice";
+import JobApplyGetByusersReducer from "./Slice/JobApplyGetByUsersSlice";
 
 const rootReducer = combineReducers({
   SignIn: SignInReducer,
@@ -38,6 +42,11 @@ const rootReducer = combineReducers({
   RecruiterJobPostJob: RecruiterJobPostJobReducer,
 
   Skill: SkillReducer,
+  
+  JobApplyPost: JobApplyPostReducer,
+  JobApplyGetByJob: JobApplyGetByJobReducer,
+  JobApplyGetByUsers: JobApplyGetByusersReducer,
+  JobApplyGetByRecruiter: JobApplyGetByRecruiterReducer,
 });
 
 const reducer = (state, action) => {

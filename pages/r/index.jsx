@@ -1,6 +1,8 @@
+import Costum503 from "../../components/Costum503"
+
 const RecruiterSearch = () => {
     return (
-      <div>Under Development</div>
+      <Costum503 />
     )
   }
   

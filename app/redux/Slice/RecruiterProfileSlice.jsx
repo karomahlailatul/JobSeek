@@ -12,7 +12,7 @@ export const getRecruiterProfile = createAsyncThunk("RecruiterProfile/getRecruit
           "Access-Control-Allow-Origin": "*",
         },
       });
-      return response.data;
+      return response.data.data[0];
     }
   } catch (error) {
     return error.response.data;
@@ -33,7 +33,7 @@ const RecruiterProfileSlice = createSlice({
     [getRecruiterProfile.fulfilled]: (state, action) => {
       state.isLoading = false;
       if (action.payload !== undefined) {
-        state.RecruiterProfile = action.payload.data[0];
+        state.RecruiterProfile = action.payload;
       }
     },
     [getRecruiterProfile.rejected]: (state, action) => {

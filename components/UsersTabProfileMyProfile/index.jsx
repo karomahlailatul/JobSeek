@@ -246,7 +246,7 @@ const UsersTabProfileMyProfile = ({
                       type="date"
                       id="date_of_birth"
                       name="date_of_birth"
-                      defaultValue={data.date_of_birth.split("T")[0] ? data.date_of_birth.split("T")[0] : UsersProfile.date_of_birth.split("T")[0] ? UsersProfile.date_of_birth.split("T")[0] : null}
+                      defaultValue={data?.date_of_birth?.split("T")[0] ? data?.date_of_birth?.split("T")[0] : UsersProfile?.date_of_birth?.split("T")[0] ? UsersProfile?.date_of_birth?.split("T")[0] : null}
                       // defaultValue={data.date_of_birth ? data.date_of_birth : UsersProfile.date_of_birth.split("T")[0] ? null : UsersProfile.date_of_birth}
                       // UsersProfile.date_of_birth.split("T")[0]
                       disabled={statusEdit === true ? false : true}
