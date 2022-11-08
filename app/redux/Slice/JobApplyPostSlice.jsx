@@ -10,6 +10,7 @@ export const postJobApplyPost = createAsyncThunk("JobApplyPost/postJobApplyPost"
       .post(process.env.REACT_APP_API_BACKEND + "job-apply", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded' ,
           "Access-Control-Allow-Origin": "*",
           Authorization: `Bearer ${token}`,
         },

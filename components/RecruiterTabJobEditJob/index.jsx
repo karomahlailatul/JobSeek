@@ -5,11 +5,13 @@ import PreLoaderComponent from "../PreLoaderComponent";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { getJobSearch } from "../../app/redux/Slice/JobSearchSlice";
 
 const RecruiterTabJobEditJob = ({
   token,
   refreshToken,
-  // role, id,
+  // role, 
+  id,
   Skill,
   idJob,
   // setIdJob,
@@ -53,8 +55,11 @@ const RecruiterTabJobEditJob = ({
   };
 
   const handleEdit = async (e) => {
+    const valueSearch = `search={"job.recruiter_id":"${id}"}&sortby=created_on&sort=desc&page=1&limit=10`
     await e.preventDefault();
-    dispatch(putRecruiterJobPutJob({ token, refreshToken, idJob, data }));
+    await dispatch(putRecruiterJobPutJob({ token, refreshToken, idJob, data }))
+    .unwrap()
+    .then(() => dispatch(getJobSearch(valueSearch)));
   };
 
   const handleSkill = (e) => {

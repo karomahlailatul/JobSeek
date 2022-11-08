@@ -4,12 +4,14 @@ import { toast } from "react-toastify";
 import PrivateAxiosSSR from "../../axios/PrivateAxiosSSR";
 
 export const postRecruiterJobPostJob = createAsyncThunk("RecruiterJobPostJob/postRecruiterJobPostJob", async ({ token, refreshToken, data }) => {
+  // console.log(data)
   let api = PrivateAxiosSSR({ token, refreshToken });
   if (token) {
     const response = await api
       .post(process.env.REACT_APP_API_BACKEND + "job/withskilljob", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded' ,
           "Access-Control-Allow-Origin": "*",
           Authorization: `Bearer ${token}`,
         },

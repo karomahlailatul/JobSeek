@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { postRecruiterJobPostJob } from "../../app/redux/Slice/RecruiterJobPostJobSlice";
 
 import Select from "react-select";
+import { getJobSearch } from "../../app/redux/Slice/JobSearchSlice";
 const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
   const dispatch = useDispatch();
 
@@ -27,9 +28,19 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
     });
   };
 
+  // console.log(data)
+
   const handleCreate = async (e) => {
+    const valueSearch = `search={"job.recruiter_id":"${id}"}&sortby=created_on&sort=desc&page=1&limit=10`;
     await e.preventDefault();
-    dispatch(postRecruiterJobPostJob({ token, refreshToken, data }));
+
+    await dispatch(postRecruiterJobPostJob({ token, refreshToken, data }))
+      .unwrap()
+      .then(() => {
+        dispatch(getJobSearch(valueSearch));
+        document.getElementById("FormCreateJob").reset();
+        setSelect(null)
+      });
   };
 
   const handleSkill = (e) => {
@@ -38,6 +49,9 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
       skill_id: e,
     });
   };
+
+  const [select, setSelect] = useState(null);
+
 
   return (
     <Fragment>
@@ -50,9 +64,9 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
           </div>
           <div className="col-12 d-flex justify-content-between"></div>
           <hr />
-          <div className="">
-            <form onSubmit={handleCreate}>
-              <div className="container-fluid">
+          
+              <div className="container-fluid"> 
+               <form id="FormCreateJob" onSubmit={handleCreate}>
                 <div className="col-12 justify-content-start mt-1 mb-4">
                   <div className="col-12 d-flex justify-content-between my-3">
                     <label className="fs-6 text-muted form-label my-auto">ID :</label>
@@ -72,7 +86,7 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
                     <label htmlFor="position" className="col-2 fs-6 text-muted form-label my-auto">
                       Position Job :
                     </label>
-                    <input id="position" type="text" name="position" className="form-control" placeholder="Position Job" onChange={handleChange} defaultValue={data.brand} />
+                    <input id="position" type="text" name="position" className="form-control" placeholder="Position Job" onChange={handleChange} defaultValue={data.position} />
                   </div>
                   <hr />
 
@@ -94,6 +108,7 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
                       onChange={(e) => {
                         handleSkill(e.map((item) => item.id));
                       }}
+                      DefaultValues={select}
                       theme={(theme) => ({
                         ...theme,
                         borderRadius: "0.375rem",
@@ -215,6 +230,7 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
                     <label htmlFor="job_description" className="fs-6 text-muted form-label">
                       Description Job
                     </label>
+                    
                     <textarea className="form-control" id="job_description" rows="5" name="description" placeholder="Description Job" onChange={handleChange} defaultValue={data.description}></textarea>
                   </div>
                 </div>
@@ -222,10 +238,9 @@ const RecruiterTabJobCreateJob = ({ token, refreshToken, id, Skill }) => {
                   <button type="submit" className="btn btn-success  px-5">
                     Publish Job
                   </button>
-                </div>
+                </div> </form>
               </div>
-            </form>
-          </div>
+           
         </div>
       </div>
     </Fragment>

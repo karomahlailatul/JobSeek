@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getJobSearch = createAsyncThunk("JobSearch/getJobSearch", async (valueSenderSearch) => {
+  // console.log(valueSenderSearch)
   const response = await axios
     .get(process.env.REACT_APP_API_BACKEND + "job?" + valueSenderSearch, {
       headers: {
