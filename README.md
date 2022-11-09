@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JobSeek 
 
-## Getting Started
+## About the project
+JobSeek Built up with NextJs with backend ExpressJS and deployment on Vercel.
 
-First, run the development server:
+## Usage 
 
-```bash
-npm run dev
-# or
-yarn dev
+### Clone
+```shell
+git clone https://github.com/karomahlailatul/JobSeek.git
+```
+### Installing 
+```shell
+npm i;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing
+```shell
+npm run start;
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Screenshot
+## Desktop Preview
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+![jobseek-find vercel app_](https://user-images.githubusercontent.com/37212759/200724834-af2d1d8e-0d2a-45a1-9c25-2ca195d0cf3c.png)
+![jobseek-find vercel app_ (2)](https://user-images.githubusercontent.com/37212759/200724867-2205d413-4a3b-4820-b1d3-3b093dd14cf9.png)
+![jobseek-find vercel app_sign-in](https://user-images.githubusercontent.com/37212759/200724870-5a54ed7d-5e62-4895-8715-f1ec6c48446f.png)
+![jobseek-find vercel app_sign-in (1)](https://user-images.githubusercontent.com/37212759/200724890-32015d5f-dd32-4bf0-b9be-194aa342ee29.png)
+![jobseek-find vercel app_sign-in (2)](https://user-images.githubusercontent.com/37212759/200724900-70f264e5-d9cb-45c9-969f-87d37140be6f.png)
+![jobseek-find vercel app_sign-in (3)](https://user-images.githubusercontent.com/37212759/200724907-7cc2f6e1-bdad-407b-94df-11c938b0b877.png)
+![jobseek-find vercel app_sign-in (4)](https://user-images.githubusercontent.com/37212759/200724913-f848946e-5424-49f0-8476-4f82ebd1c95f.png)
+![jobseek-find vercel app_sign-in (5)](https://user-images.githubusercontent.com/37212759/200724916-711dd033-bf88-41ec-bf9f-231ec1549e01.png)
+![jobseek-find vercel app_sign-in (6)](https://user-images.githubusercontent.com/37212759/200724929-1ed081a4-bc9c-4b88-9460-e9fe030469d0.png)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Mobile Preview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+![jobseek-find vercel app_ (1)](https://user-images.githubusercontent.com/37212759/200724532-ec02dbff-eb02-4251-8a07-4e3ad6d30c33.png)
+![jobseek-find vercel app_ (3)](https://user-images.githubusercontent.com/37212759/200724569-0409a9e4-7804-40b4-8932-2d8f85537c8e.png)
+![jobseek-find vercel app_ (4)](https://user-images.githubusercontent.com/37212759/200724571-65039599-b735-40e4-8c06-19981adec74b.png)
+![jobseek-find vercel app_ (5)](https://user-images.githubusercontent.com/37212759/200724574-9cabbad4-9b11-4925-bd9c-c25d050d3abe.png)
+![jobseek-find vercel app_ (6)](https://user-images.githubusercontent.com/37212759/200724578-3b461f1e-deb4-4174-9bf3-c57f666cd84d.png)
+![jobseek-find vercel app_ (7)](https://user-images.githubusercontent.com/37212759/200724583-1f368d64-e863-4528-80f6-3a8c6af00cd1.png)
+![jobseek-find vercel app_ (8)](https://user-images.githubusercontent.com/37212759/200724586-cc9d045c-5984-4320-8d1f-94859d06d746.png)
+![jobseek-find vercel app_ (9)](https://user-images.githubusercontent.com/37212759/200724591-8d062cf8-a687-4b7b-b2f3-84c6efef951d.png)
+![jobseek-find vercel app_ (10)](https://user-images.githubusercontent.com/37212759/200724594-5dabcdf1-a96f-469b-bcd6-8003f3bae918.png)
+
+
+
+
