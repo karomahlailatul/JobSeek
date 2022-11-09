@@ -13,7 +13,7 @@ import RecruiterTabJobCreateJob from "../../../components/RecruiterTabJobCreateJ
 
 import RecruiterTabJobApplyStatusJob from "../../../components/RecruiterTabJobApplyStatusJob";
 
-// import PreLoader from "../../../components/PreLoader";
+import PreLoader from "../../../components/PreLoader";
 
 import { getRecruiterProfile } from "../../../app/redux/Slice/RecruiterProfileSlice";
 import { getSkill } from "../../../app/redux/Slice/SkillSlice";
@@ -30,7 +30,6 @@ import { faHouseLaptop } from "@fortawesome/free-solid-svg-icons";
 
 import { toast } from "react-toastify";
 import useWindowSize from "../../../components/WindowsSize";
-import Preloader from "../../../components/Preloader";
 import { getJobApplyByRecruiter } from "../../../app/redux/Slice/JobApplyGetByRecruiterSlice";
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
@@ -105,7 +104,7 @@ const UsersProfile = ({ id, token, refreshToken, role, Skill, JobApplyByRecruite
   return (
     <Fragment>
       {isLoading ? (
-        <Preloader isLoading={true} />
+        <PreLoader isLoading={true} />
       ) : (
         <Fragment>
           <div className="container-xl container-lg container-md-fluid container-sm-fluid  container-profile-recruiter">
