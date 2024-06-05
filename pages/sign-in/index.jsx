@@ -45,8 +45,10 @@ const SignIn = () => {
   });
 
   // SSO Google
-  const redirectgoogle = async () => {
-    const urlBeGoogle = `${process.env.REACT_APP_API_BACKEND}users/auth/google`;
+  const redirectApiAuth = async (
+    url = "google"
+  ) => {
+    const urlBeGoogle = `${process.env.REACT_APP_API_BACKEND}users/auth/${url}`;
     let height = 800;
     let width = 700;
     let left = (screen.width - width) / 2;
@@ -56,7 +58,7 @@ const SignIn = () => {
 
   useEffect(() => {
     let timer = setInterval(() => {
-      if (Cookies.get("token") && Cookies.get("refreshToken") && Cookies.get("id") && Cookies.get("role")&& Cookies.get("lockCredential")) {
+      if (Cookies.get("token") && Cookies.get("refreshToken") && Cookies.get("id") && Cookies.get("role") && Cookies.get("lockCredential")) {
         clearInterval(timer);
         router.push("/");
       }
@@ -107,11 +109,17 @@ const SignIn = () => {
                   </Link>
                 </div>
               </form>
-              <hr/>
-              <button type="button" className="col-12 btn btn-success btn-submit" onClick={redirectgoogle}>
+              <hr />
+              <button type="button" className="col-12 btn btn-success btn-submit" onClick={()=> redirectApiAuth("google")}>
                 <div className="d-flex justify-content-center align-items-center text-center">
                   <Image src={"/assets/icons/google_g_logo.svg"} width="30px" height="30px" className="align-items-center" alt="" />
                   <p className="ms-2 my-auto">Continue with Google</p>
+                </div>
+              </button>
+              <button type="button" className="mt-2 col-12 btn btn-success btn-submit" onClick={()=> redirectApiAuth("facebook")}>
+                <div className="d-flex justify-content-center align-items-center text-center">
+                  <Image src={"/assets/icons/fb_g_logo.svg"} width="30px" height="30px" className="align-items-center" alt="" />
+                  <p className="ms-2 my-auto">Continue with Facebook</p>
                 </div>
               </button>
             </div>
